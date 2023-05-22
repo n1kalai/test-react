@@ -31,7 +31,6 @@ const App = () => {
 	};
 
 	const onClick = () => {
-		// setNumber((previosValue) => previosValue + 1);
 		setName(Math.random());
 	};
 
