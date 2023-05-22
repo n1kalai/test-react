@@ -1,19 +1,18 @@
 import { Component } from "react";
 import { fetchCocktails } from "./api/cocktails";
+import { CocktailContainer } from "./components/cocktails/CocktailContainer";
 
 class AppWithClass extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
-			number: 1,
-			name: "nika",
 			cocktails: {
 				isLoading: true,
 				isLoaded: false,
 				isError: false,
 			},
 		};
-		this.handleClick = this.handleClick.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	async componentDidMount() {
@@ -39,7 +38,7 @@ class AppWithClass extends Component {
 		}
 	}
 
-	handleClick(id) {
+	handleDelete(id) {
 		const newArray = [...this.state.cocktails.data];
 		const filteredArray = newArray.filter((element) => element.idDrink !== id);
 		this.setState({
@@ -53,7 +52,7 @@ class AppWithClass extends Component {
 	}
 
 	render() {
-		const { number, name, cocktails } = this.state;
+		const { cocktails } = this.state;
 
 		if (cocktails.isLoading) {
 			return <h1>იტვირთება...</h1>;
@@ -65,18 +64,13 @@ class AppWithClass extends Component {
 
 		return (
 			<section className="cocktails-container">
-				{cocktails.data.map((cocktail, index) => {
-					return (
-						<article className="cocktail-container" key={cocktail.idDrink}>
-							<h2>{cocktail.strDrink}</h2>
-							<img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-							<p>{cocktail.strInstructions}</p>
-							<button onClick={(e) => this.handleClick(cocktail.idDrink)}>
-								Delete me
-							</button>
-						</article>
-					);
-				})}
+				{cocktails.data.map((cocktail) => (
+					<CocktailContainer
+						onDelete={this.handleDelete}
+						cocktail={cocktail}
+						key={cocktail.idDrink}
+					/>
+				))}
 			</section>
 		);
 	}
