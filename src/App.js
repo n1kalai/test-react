@@ -36,7 +36,7 @@ const App = () => {
 	};
 
 	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
+		return <h1>იტვირთება...</h1>;
 	}
 
 	return (
