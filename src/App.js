@@ -1,7 +1,7 @@
 import "./App.css";
+import "./style.css"
 import { useState, useEffect } from "react";
 import fetchingComments from "./api/comments";
-import "./style.css"
 import showComments from "./api/showComments";
 
 const commentsDefaultState = {
@@ -40,10 +40,10 @@ const App = () => {
 
   const onClick = async (id) => {
 		try {
-			const fetchedShowComments = await showComments(id);
+			const getComment = await showComments(id);
 			setNewComments((prevComments) => ({
 				...prevComments,
-				[id]: fetchedShowComments,
+				[id]: getComment,
 			}));
 		} catch (err) {
 			console.log(err);
