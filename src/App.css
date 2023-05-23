@@ -8,8 +8,9 @@
 }
 .languages p {
 	background-color: red;
-	text-align: center;
+	text-align: center
 }
+
 .App img {
 	height: 200px;
 	aspect-ratio: 4/4;
@@ -39,4 +40,13 @@
 
 .App-link {
 	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
