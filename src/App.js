@@ -39,9 +39,7 @@ const App = () => {
 	}
 
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+	
 	);
 };
 
