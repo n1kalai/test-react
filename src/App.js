@@ -1,48 +1,45 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Languages } from "./components/Languages";
+import logo from './logo.svg';
+import './App.css';
+import Vizuali from './Vizuali';
 import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import {fetchPost} from "./api/Posts"
 
-const cocktailsDefaultStatee = {
+
+const defaultpostebi = {
 	data: [],
 	isLoading: true,
 	isLoaded: false,
 	isError: false,
 };
 
-const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
+
+function App() {
+  const [posts, setposts] = useState(defaultpostebi);
+	console.log(posts);
 	useEffect(() => {
-		handleFetchCocktails();
+		handleFetchPosts();
 	}, []);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
+	const handleFetchPosts = async () => {
+		const fetchedposts = await fetchPost();
+		setposts({
+			data: fetchedposts,
 			isLoading: false,
 			isLoaded: true,
 			isError: false,
 		});
 	};
 
-	const onClick = () => {
-		setName(Math.random());
-	};
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
+
+	if (posts.isLoading) {
+		return <h1>loading...</h1>;
 	}
 
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
-};
+	
+  return (
+    <Vizuali/>
+  );
+}
 
 export default App;
