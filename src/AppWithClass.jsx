@@ -1,18 +1,20 @@
 import { Component } from "react";
-import { fetchCocktails } from "./api/cocktails";
-import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+import { fetchCocktails } from "./cocktail/cocktails";
+import CocktailArticle from "./CocktailComponent";
 
 class AppWithClass extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
+			number: 1,
+			name: "nika",
 			cocktails: {
 				isLoading: true,
 				isLoaded: false,
 				isError: false,
 			},
 		};
-		this.handleDelete = this.handleDelete.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	async componentDidMount() {
@@ -37,8 +39,7 @@ class AppWithClass extends Component {
 			});
 		}
 	}
-
-	handleDelete(id) {
+	handleClick(id) {
 		const newArray = [...this.state.cocktails.data];
 		const filteredArray = newArray.filter((element) => element.idDrink !== id);
 		this.setState({
@@ -52,7 +53,7 @@ class AppWithClass extends Component {
 	}
 
 	render() {
-		const { cocktails } = this.state;
+		const { number, name, cocktails } = this.state;
 
 		if (cocktails.isLoading) {
 			return <h1>იტვირთება...</h1>;
@@ -64,15 +65,10 @@ class AppWithClass extends Component {
 
 		return (
 			<section className="cocktails-container">
-				{cocktails.data.map((cocktail) => (
-					<CocktailContainer
-						onDelete={this.handleDelete}
-						cocktail={cocktail}
-						key={cocktail.idDrink}
-					/>
-				))}
+				<CocktailArticle />
 			</section>
 		);
+		
 	}
 }
 

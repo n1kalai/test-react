@@ -2,7 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Languages } from "./components/Languages";
 import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import { fetchCocktails } from "./cocktail/cocktails";
+import CocktailArticle from "./CocktailComponent"
 
 const cocktailsDefaultStatee = {
 	data: [],
@@ -12,37 +13,44 @@ const cocktailsDefaultStatee = {
 };
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+  const [number, setNumber] = useState();
+  const [name, setName] = useState("");
+  const [cocktails, setCocktails] = useState([]);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
+  useEffect(() => {
+    handleFetchCocktails();
+  }, []);
 
-	const onClick = () => {
+  const handleFetchCocktails = async () => {
+    try {
+      const fetchedCocktails = await fetchCocktails();
+      setCocktails(fetchedCocktails);
+    } catch (err) {
+      console.error("Error", err);
+      setCocktails([]);
+    }
+  };
+
+  const onClick = () => {
+		// setNumber((previosValue) => previosValue + 1);
 		setName(Math.random());
 	};
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
+  const handleClick = (id) => {
+    const updatedCocktails = cocktails.filter((cocktail) => cocktail.idDrink !== id);
+    setCocktails(updatedCocktails);
+  };
 
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
+  if (cocktails.length === 0) {
+    return <h1>იტვირთება...</h1>;
+  }
+
+  return (
+    <div>
+     
+      <CocktailArticle cocktails={cocktails} handleClick={handleClick} />
+    </div>
+  );
 };
 
 export default App;

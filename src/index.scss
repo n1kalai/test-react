@@ -1,7 +1,9 @@
 .cocktails-container {
 	display: flex;
 	gap: 20px;
-	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	.cocktail-container {
 		display: flex;
 		flex-direction: column;
@@ -10,4 +12,18 @@
 			width: 360px;
 		}
 	}
+}
+@mixin backcolor{
+	background-color: rgba(16, 162, 113, 0.233);
+}
+button{
+	 background-color: rgb(0, 255, 251);
+	border-radius: 9px;
+	border-style: none;
+	height: 30px;
+	cursor: pointer;
+	 
+}
+body{
+	@include backcolor()
 }
