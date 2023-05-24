@@ -104,3 +104,5 @@ class AppWithClass extends Component {
       }
 
 export default AppWithClass;
+
+//comment for new comment
