@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./App";
+// import App from "./App"; / not using;
 import reportWebVitals from "./reportWebVitals";
-import AppWithClass from "./AppWithClass";
-
+// import AppWithClass from "./AppWithClass"; / not using this one.
+import CocktailsWithFunc from "./CocktailsWithFunc";
+import PostsCommentsFunc from "./PostsWithFunc";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<AppWithClass />
+	// => task 1 - cocktails <=
+	<CocktailsWithFunc />
+	// vvv task 2 - posts&comments vvv
+	// <PostsCommentsFunc />
 	// </React.StrictMode>
 );
 
