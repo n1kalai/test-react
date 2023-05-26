@@ -19,6 +19,7 @@ const AppWithClass = () => {
 	const getCocktailsData = async () => {
 		try {
 			const cocktails = await fetchCocktails();
+			console.log(cocktails);
 			setCocktails({
 				data: cocktails,
 				isLoading: false,
