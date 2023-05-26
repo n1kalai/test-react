@@ -15,7 +15,7 @@ const App = () => {
 	const [number, setNumber] = useState(1);
 	const [name, setName] = useState("gela");
 	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
+
 	useEffect(() => {
 		handleFetchCocktails();
 	}, []);

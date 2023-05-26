@@ -1,7 +1,7 @@
 {
-	"name": "test-react",
+	"name": "DI-march",
 	"version": "0.1.0",
-	"homepage": "http://n1kalai.github.io/test-react",
+	"homepage": "http://n1kalai.github.io/DI-march",
 	"private": true,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
