@@ -1,6 +1,6 @@
 import { Component, useEffect, useState } from "react";
 import { fetchCocktails } from "./api/cocktails";
-import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+import CocktailContainer from "./components/cocktails/CocktailContainer";
 
 const cocktailsDefaultState = {
 	data: [],
