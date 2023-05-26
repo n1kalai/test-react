@@ -1,42 +1,57 @@
-.App {
-	display: flex;
-	gap: 20px;
-}
-.languages {
-	border: solid 1px lightgray;
-	box-shadow: 0 0 10px gray;
-}
-.languages p {
-	background-color: red;
-	text-align: center;
-}
-.App img {
-	height: 200px;
-	aspect-ratio: 4/4;
-	pointer-events: none;
-}
-.number {
-	font-size: 40px;
-	text-align: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
+.form{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+	width: 90%;
+	margin: 0 auto;
+	border: green solid 1px;
+	border-radius: 10px;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: white;
+	box-shadow: 2px 2px 5px black;
 }
+.btn{
+	cursor: pointer;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	border: none;
+	box-shadow: 2px 2px 5px gray;
+	transition: 0.5s;
+	font-size: 1.2rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-.App-link {
-	color: #61dafb;
+}
+.form-input{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+}
+.form-items{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+	margin: 0 auto;
+}
+.item{
+	cursor: pointer;
+	border: black solid 1px;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: gray;
+	color: white;
+	box-shadow: 2px 2px 5px gray;
+	transition: 0.5s;
 }
