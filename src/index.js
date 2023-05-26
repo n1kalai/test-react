@@ -7,10 +7,16 @@ import AppWithClass from "./Main-Pages/AppWithClass";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+<<<<<<< HEAD
   // <React.StrictMode>
   <AppWithPosts />
   // <AppWithClass/>
   // </React.StrictMode>
+=======
+	// <React.StrictMode>
+	<App />
+	// </React.StrictMode>
+>>>>>>> 225e962b2bc58a4c6ab08637b9e345826c9b7dfc
 );
 
 // If you want to start measuring performance in your app, pass a function

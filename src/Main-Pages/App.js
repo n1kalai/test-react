@@ -27,7 +27,7 @@ class AppWithPosts extends Component {
     try {
       const post = await fetchPosts();
       const komentari = fetchPostsByID();
-      console.log(komentari);
+      console.log(komentari, "kkk");
 
       this.setState({
         PostsData: post,
