@@ -4,11 +4,13 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppWithClass from "./AppWithClass";
+import AppSeeComments from "./AppSeeComments";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<AppWithClass />
+	// <AppWithClass />
+	<AppSeeComments />
 	// </React.StrictMode>
 );
 

@@ -19,6 +19,33 @@
 	font-size: 40px;
 	text-align: center;
 }
+.container{
+	position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    
+}
+.left{
+	position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+	left: 0; 
+	top: 50px;
+}
+.right{
+	position: fixed;
+    display: flex;
+    width: 50%;
+	right: 0;
+	top: 200px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
 	.App-logo {
