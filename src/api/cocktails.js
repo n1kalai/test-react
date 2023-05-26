@@ -5,3 +5,5 @@ export const fetchCocktails = async () => {
 	const jsonData = await cocktails.json();
 	return jsonData.drinks;
 };
+
+// git test
