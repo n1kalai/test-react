@@ -1,69 +1,50 @@
 import "./App.css";
 import { useState } from "react";
+import Input from "./components/Input";
 
 const App = () => {
-	const [user, setUser] = useState({
-		first_name: "",
-		last_name: "",
-		number: 1231231,
-		sex: "",
-	});
+	const [item, setItem] = useState("");
+	const [savedItems, setSavedItems] = useState([]);
 
-	const handleInputChange = (event) => {
-		const { name, value } = event.target;
+	function addItem() {
+		if (!item) {
+			alert("Enter an item...");
+			return;
+		}
 
-		setUser((prevState) => ({
-			...prevState,
-			[name]: value,
-		}));
-	};
+		const myItem = {
+			id: Math.floor(Math.random() * 100),
+			value: item
+		};
+		setSavedItems(oldList => [...oldList, myItem]);
+		setItem("");
+	}
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(user);
-	};
+	function deleteItem(id) {
+		const deletedItems = savedItems.filter(item => item.id !== id);
+		setSavedItems(deletedItems);
+	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<legend>registration</legend>
-			<input
-				placeholder="name"
-				name="first_name"
-				value={user.first_name}
-				onChange={handleInputChange}
+		<div className="to-do-app">
+			<h1>TODO LIST</h1>
+
+			<Input
+				value={item}
+				onChange={e => setItem(e.target.value)}
+				placeholder="add item..."
 			/>
-			<input
-				onChange={handleInputChange}
-				placeholder="last name"
-				name="last_name"
-				value={user.last_name}
-			/>
-			<div>
-				<div>your sex</div>
-				<div>male</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="male"
-					name="sex"
-				/>
-				<div>female</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="female"
-					name="sex"
-				/>
-				<div>other</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="other"
-					name="sex"
-				/>
-			</div>
-			<button>submit</button>
-		</form>
+
+			<button id="add-button" onClick={() => addItem()}>Add</button>
+			<ul>
+				{savedItems.map(todoItem => (
+					<li key={todoItem.id}>
+						<span>{todoItem.value}</span>{" "}
+						<button id="del-btn" onClick={() => deleteItem(todoItem.id)}>X</button>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 };
 
