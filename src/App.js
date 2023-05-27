@@ -1,48 +1,75 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
-
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+import { useState } from "react";
+import Todolist from "./Todolist"
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
+	return(
+		<Todolist />
+	)
+	// const [user, setUser] = useState({
+	// 	first_name: "",
+	// 	last_name: "",
+	// 	number: 1231231,
+	// 	sex: "",
+	// });
 
-	const onClick = () => {
-		setName(Math.random());
-	};
+	// const handleInputChange = (event) => {
+	// 	const { name, value } = event.target;
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
+	// 	setUser((prevState) => ({
+	// 		...prevState,
+	// 		[name]: value,
+	// 	}));
+	// };
 
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
+	// const handleSubmit = (event) => {
+	// 	event.preventDefault();
+	// 	console.log(user);
+	// };
+
+	// return (
+	// 	<form onSubmit={handleSubmit}>
+	// 		<legend>registration</legend>
+	// 		<input
+	// 			placeholder="name"
+	// 			name="first_name"
+	// 			value={user.first_name}
+	// 			onChange={handleInputChange}
+	// 		/>
+	// 		<input
+	// 			onChange={handleInputChange}
+	// 			placeholder="last name"
+	// 			name="last_name"
+	// 			value={user.last_name}
+	// 		/>
+	// 		<div>
+	// 			<div>your sex</div>
+	// 			<div>male</div>
+	// 			<input
+	// 				type="radio"
+	// 				onChange={handleInputChange}
+	// 				value="male"
+	// 				name="sex"
+	// 			/>
+	// 			<div>female</div>
+	// 			<input
+	// 				type="radio"
+	// 				onChange={handleInputChange}
+	// 				value="female"
+	// 				name="sex"
+	// 			/>
+	// 			<div>other</div>
+	// 			<input
+	// 				type="radio"
+	// 				onChange={handleInputChange}
+	// 				value="other"
+	// 				name="sex"
+	// 			/>
+	// 		</div>
+	// 		<button>submit</button>
+	// 	</form>
+	// );
 };
 
 export default App;
