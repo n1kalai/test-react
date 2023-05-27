@@ -1,47 +1,50 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
-
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+import { useState } from "react";
+import Input from "./components/Input";
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+	const [item, setItem] = useState("");
+	const [savedItems, setSavedItems] = useState([]);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
+	function addItem() {
+		if (!item) {
+			alert("Enter an item...");
+			return;
+		}
 
-	const onClick = () => {
-		setName(Math.random());
-	};
+		const myItem = {
+			id: Math.floor(Math.random() * 100),
+			value: item
+		};
+		setSavedItems(oldList => [...oldList, myItem]);
+		setItem("");
+	}
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
+	function deleteItem(id) {
+		const deletedItems = savedItems.filter(item => item.id !== id);
+		setSavedItems(deletedItems);
 	}
 
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+		<div className="to-do-app">
+			<h1>TODO LIST</h1>
+
+			<Input
+				value={item}
+				onChange={e => setItem(e.target.value)}
+				placeholder="add item..."
+			/>
+
+			<button id="add-button" onClick={() => addItem()}>Add</button>
+			<ul>
+				{savedItems.map(todoItem => (
+					<li key={todoItem.id}>
+						<span>{todoItem.value}</span>{" "}
+						<button id="del-btn" onClick={() => deleteItem(todoItem.id)}>X</button>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 };
 
