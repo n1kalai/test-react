@@ -1,13 +1,109 @@
-.cocktails-container {
-	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	.cocktail-container {
-		display: flex;
-		flex-direction: column;
-		width: 360px;
-		& img {
-			width: 360px;
-		}
-	}
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+
+  background: linear-gradient(to bottom, #f5f5dc, #ffebcd);
+  font-family: "Pangolin", cursive;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .todo-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 70vw;
+
+    h1 {
+      // font-family: "Montserrat", sans-serif;
+
+      font-size: 70px;
+
+      width: 100%;
+      text-align: center;
+    }
+
+    h1::after {
+      content: "";
+      border-bottom: 5px solid rgb(42, 81, 81);
+      display: block;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .todo-input {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      width: 100%;
+
+      gap: 8px;
+    }
+
+    input {
+      width: 100%;
+
+      border-radius: 10px;
+      height: 30px;
+      font-size: 18px;
+
+      border: 2px solid rgba(42, 81, 81, 0.5);
+      outline: none;
+
+      padding: 3px 15px;
+      box-sizing: border-box;
+
+      &:focus {
+        box-shadow: 0px 5px 10px rgba(178, 144, 121, 0.64);
+
+        border: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    button {
+      background-color: rgb(178, 144, 121);
+      font-size: 18px;
+
+      padding: 7px 50px;
+      border-radius: 10px;
+
+      border: none;
+    }
+
+    ul {
+      width: 100%;
+      padding-left: 0;
+
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    ul li {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: black;
+      font-weight: 900;
+
+      border: 1px double rgba(42, 81, 81, 0.5);
+      border-radius: 10px;
+      list-style: none;
+      width: 100%;
+
+      font-size: 18px;
+
+      padding: 4px 15px;
+      box-sizing: border-box;
+
+      word-break: break-word;
+    }
+  }
 }
