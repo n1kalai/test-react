@@ -1,172 +1,66 @@
-import { Component, useEffect, useState } from "react";
-import { fetchCocktails } from "./api/cocktails";
-import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+// import React, { useState, useEffect } from "react";
+// import { fetchCocktails } from "./api/cocktails";
+// import CocktailComponent from "./components/coctailComponent";
 
-const cocktailsDefaultState = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+// const AppWithFunction = () => {
+//   const [cocktails, setCocktails] = useState({
+//     isLoading: true,
+//     isLoaded: false,
+//     isError: false,
+//     data: [],
+//   });
 
-const AppWithClass = () => {
-	const [cocktails, setCocktails] = useState(cocktailsDefaultState);
-	console.log(cocktails);
-	useEffect(() => {
-		getCocktailsData();
-	}, []);
+//   useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         const cocktailsData = await fetchCocktails();
+//         setCocktails({
+//           data: cocktailsData,
+//           isLoading: false,
+//           isLoaded: true,
+//           isError: false,
+//         });
+//       } catch (error) {
+//         setCocktails({
+//           data: [],
+//           isLoading: false,
+//           isLoaded: true,
+//           isError: true,
+//         });
+//       }
+//     }
+//     fetchData();
+//   }, []);
 
-	const getCocktailsData = async () => {
-		try {
-			const cocktails = await fetchCocktails();
-			console.log(cocktails);
-			setCocktails({
-				data: cocktails,
-				isLoading: false,
-				isLoaded: true,
-				isError: false,
-			});
-		} catch (error) {
-			setCocktails({
-				data: [],
-				isLoading: false,
-				isLoaded: true,
-				isError: true,
-			});
-		}
-	};
+//   const handleClick = (id) => {
+//     const filteredCocktails = cocktails.data.filter(
+//       (cocktail) => cocktail.idDrink !== id
+//     );
+//     setCocktails((prevCocktails) => ({
+//       ...prevCocktails,
+//       data: filteredCocktails,
+//     }));
+//   };
 
-	const handleDelete = (id) => {
-		const filteredArr = cocktails.data.filter(
-			(cocktail) => cocktail.idDrink !== id
-		);
-		setCocktails({
-			data: filteredArr,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
+//   if (cocktails.isLoading) {
+//     return <h1>Loading...</h1>;
+//   }
 
-	if (cocktails.isLoading) {
-		return <h1>Loading...</h1>;
-	}
+//   if (cocktails.isError) {
+//     return <h1>Error...</h1>;
+//   }
 
-	if (cocktails.isError) {
-		return <h1>error</h1>;
-	}
+//   return (
+//     <section className="cocktails-container">
+//       {cocktails.data.map((cocktail, index) => (
+//         <CocktailComponent
+//           key={index}
+//           cocktail={cocktail}
+//           handleClick={() => handleClick(cocktail.idDrink)}
+//         />
+//       ))}
+//     </section>
+//   );
+// };
 
-	if (!cocktails.data.length) {
-		return <h1>No cocktails found</h1>;
-	}
-
-	return (
-		<section className="cocktails-container">
-			{cocktails.data.map((cocktail) => (
-				<CocktailContainer
-					onDelete={handleDelete}
-					key={cocktail.idDrink}
-					cocktail={cocktail}
-				/>
-			))}
-		</section>
-	);
-};
-
-// class AppWithClassx extends Component {
-// 	constructor() {
-// 		super();
-// 		this.state = {
-// 			cocktails: {
-// 				data: [],
-// 				isLoading: true,
-// 				isLoaded: false,
-// 				isError: false,
-// 			},
-// 			more: {
-
-// 			}
-// 		};
-// 		this.handleDelete = this.handleDelete.bind(this);
-// 	}
-
-// 	async componentDidMount() {
-// 		try {
-// 			const cocktails = await fetchCocktails();
-// 			this.setState({
-// 				cocktails: {
-// 					data: cocktails,
-// 					isLoading: false,
-// 					isLoaded: true,
-// 					isError: false,
-// 				},
-// 			});
-// 		} catch (err) {
-// 			this.setState({
-// 				cocktails: {
-// 					data: [],
-// 					isLoading: false,
-// 					isLoaded: true,
-// 					isError: true,
-// 				},
-// 			});
-// 		}
-// 	}
-
-// 	handleDelete(id) {
-// 		const newArray = [...this.state.cocktails.data];
-// 		const filteredArray = newArray.filter((element) => element.idDrink !== id);
-// 		this.setState({
-// 			cocktails: {
-// 				data: filteredArray,
-// 				isLoading: false,
-// 				isLoaded: true,
-// 				isError: false,
-// 			},
-// 		});
-// 	}
-
-// 	render() {
-// 		const { cocktails } = this.state;
-
-// 		if (cocktails.isLoading) {
-// 			return <h1>იტვირთება...</h1>;
-// 		}
-
-// 		if (cocktails.isError) {
-// 			return <h1>შეცდომა...</h1>;
-// 		}
-
-// 		return (
-// 			<section className="cocktails-container">
-// 				{cocktails.data.map((cocktail) => (
-// 					<CocktailContainer
-// 						onDelete={this.handleDelete}
-// 						cocktail={cocktail}
-// 						key={cocktail.idDrink}
-// 					/>
-// 				))}
-// 			</section>
-// 		);
-// 	}
-// }
-
-{
-	/* <CocktailComponent /> */
-}
-
-export default AppWithClass;
-
-// componentDidUpdate(prevProps, prevState) {
-// 	console.log("prevState", prevState);
-// 	console.log("nextState", prevProps);
-// }
-
-// componentDidMount
-// componentWillUnmount() {}
-// componentDidUpdate
-
-// componentDidCatch(error, info) {
-// 	console.log("errored");
-// 	console.log("erorshia", info);
-// }
+// export default AppWithFunction;
