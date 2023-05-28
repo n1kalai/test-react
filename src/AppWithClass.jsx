@@ -1,5 +1,5 @@
 import { Component, useEffect, useState } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import { FetchCocktails } from "./api/cocktails";
 import { CocktailContainer } from "./components/cocktails/CocktailContainer";
 
 const cocktailsDefaultState = {
@@ -12,13 +12,14 @@ const cocktailsDefaultState = {
 const AppWithClass = () => {
 	const [cocktails, setCocktails] = useState(cocktailsDefaultState);
 	console.log(cocktails);
+	
 	useEffect(() => {
 		getCocktailsData();
 	}, []);
 
 	const getCocktailsData = async () => {
 		try {
-			const cocktails = await fetchCocktails();
+			const cocktails = await FetchCocktails();
 			console.log(cocktails);
 			setCocktails({
 				data: cocktails,
@@ -26,6 +27,7 @@ const AppWithClass = () => {
 				isLoaded: true,
 				isError: false,
 			});
+		
 		} catch (error) {
 			setCocktails({
 				data: [],
@@ -37,16 +39,22 @@ const AppWithClass = () => {
 	};
 
 	const handleDelete = (id) => {
-		const filteredArr = cocktails.data.filter(
-			(cocktail) => cocktail.idDrink !== id
+
+		const filteredArr = cocktails.data.drinks.filter((cocktail) => cocktail.idDrink !== id
 		);
+	
 		setCocktails({
-			data: filteredArr,
+			data: {
+			  drinks: filteredArr
+			},
 			isLoading: false,
 			isLoaded: true,
 			isError: false,
-		});
-	};
+		  });
+		};
+
+	console.log(cocktails);
+	console.log(cocktails.data);
 
 	if (cocktails.isLoading) {
 		return <h1>Loading...</h1>;
@@ -56,13 +64,15 @@ const AppWithClass = () => {
 		return <h1>error</h1>;
 	}
 
-	if (!cocktails.data.length) {
-		return <h1>No cocktails found</h1>;
-	}
+	// if (!cocktails.data.length) {
+	// 	return <h1>No cocktails found</h1>;
+	// }
+
 
 	return (
 		<section className="cocktails-container">
-			{cocktails.data.map((cocktail) => (
+			{cocktails.data.drinks.map((cocktail) =>(
+
 				<CocktailContainer
 					onDelete={handleDelete}
 					key={cocktail.idDrink}
@@ -72,6 +82,9 @@ const AppWithClass = () => {
 		</section>
 	);
 };
+
+
+export default AppWithClass;
 
 // class AppWithClassx extends Component {
 // 	constructor() {
@@ -155,7 +168,7 @@ const AppWithClass = () => {
 	/* <CocktailComponent /> */
 }
 
-export default AppWithClass;
+
 
 // componentDidUpdate(prevProps, prevState) {
 // 	console.log("prevState", prevState);
