@@ -6,6 +6,9 @@ export const fetchCocktails = async () => {
 	return jsonData.drinks;
 };
 
+
+
+
 // export const fetchCocktails = () => {
 // 	return fetch(
 // 		"https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
