@@ -1,48 +1,67 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
-
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+import { useState } from "react";
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+  const [toDo, setTodo] = useState({
+    text: "",
+  });
+  const [todos, setTodos] = useState([]);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
+  const handleChangevalue = (val) => {
+    setTodo((prev) => {
+      return { ...prev, [val.name]: val.value };
+    });
+  };
 
-	const onClick = () => {
-		setName(Math.random());
-	};
+  const handleAddToDo = () => {
+    const newTodo = {
+      ...toDo,
+      id: Math.floor(Math.random() * 1000),
+    };
+    setTodos((prev) => [...prev, newTodo]);
+    setTodo({ text: "" });
+  };
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
+  const handleDeleteTodo = (index) => {
+    console.log(index);
+    const upDatedToDos = [...todos];
+    upDatedToDos.splice(index, 1);
+    setTodos(upDatedToDos);
+  };
+
+  return (
+    <div className="Main-Div">
+      <h1 className="Headone">TODO LIST</h1>
+      <hr className="hr"></hr>
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          onChange={(event) => handleChangevalue(event.target)}
+          value={toDo.text}
+          name="text"
+          className="input"
+          placeholder="add item..."
+        />
+        <button onClick={handleAddToDo} className="button">
+          ADD
+        </button>
+      </form>
+      <ul className="return">
+        {todos.map((todo, index) => (
+          <li
+            className="li"
+            onClick={() => handleDeleteTodo(index)}
+            key={todo.id}
+          >
+            {todo.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default App;
