@@ -1,77 +1,170 @@
-import { Component, useEffect, useState } from "react";
+import { Component } from "react";
 import { fetchCocktails } from "./api/cocktails";
-import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+import { Cocktailshomo } from "./components/Cocktailshomo";
 
-const cocktailsDefaultState = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
 
-const AppWithClass = () => {
-	const [cocktails, setCocktails] = useState(cocktailsDefaultState);
-	console.log(cocktails);
-	useEffect(() => {
-		getCocktailsData();
-	}, []);
+class AppWithClass extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			number: 1,
+			name: "nika",
+			cocktails: {
+				isLoading: true,
+				isLoaded: false,
+				isError: false,
+			},
+		};
+		this.handleClick = this.handleClick.bind(this);
+	}
 
-	const getCocktailsData = async () => {
+	async componentDidMount() {
 		try {
 			const cocktails = await fetchCocktails();
-			console.log(cocktails);
-			setCocktails({
-				data: cocktails,
+			this.setState({
+				cocktails: {
+					data: cocktails,
+					isLoading: false,
+					isLoaded: true,
+					isError: false,
+				},
+			});
+		} catch (err) {
+			this.setState({
+				cocktails: {
+					data: [],
+					isLoading: false,
+					isLoaded: true,
+					isError: true,
+				},
+			});
+		}
+	}
+
+	handleClick(id) {
+		const newArray = [...this.state.cocktails.data];
+		const filteredArray = newArray.filter((element) => element.idDrink !== id);
+		this.setState({
+			cocktails: {
+				data: filteredArray,
 				isLoading: false,
 				isLoaded: true,
 				isError: false,
-			});
-		} catch (error) {
-			setCocktails({
-				data: [],
-				isLoading: false,
-				isLoaded: true,
-				isError: true,
-			});
-		}
-	};
-
-	const handleDelete = (id) => {
-		const filteredArr = cocktails.data.filter(
-			(cocktail) => cocktail.idDrink !== id
-		);
-		setCocktails({
-			data: filteredArr,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
+			},
 		});
-	};
-
-	if (cocktails.isLoading) {
-		return <h1>Loading...</h1>;
 	}
 
-	if (cocktails.isError) {
-		return <h1>error</h1>;
-	}
+	render() {
+		const { number, name, cocktails } = this.state;
 
-	if (!cocktails.data.length) {
-		return <h1>No cocktails found</h1>;
-	}
+		if (cocktails.isLoading) {
+			return <h1>იტვირთება...</h1>;
+		}
 
-	return (
-		<section className="cocktails-container">
-			{cocktails.data.map((cocktail) => (
-				<CocktailContainer
-					onDelete={handleDelete}
-					key={cocktail.idDrink}
-					cocktail={cocktail}
-				/>
-			))}
-		</section>
-	);
-};
+		if (cocktails.isError) {
+			return <h1>შეცდომა...</h1>;
+		}
+
+		return (
+			<section className="cocktails-container">
+				{cocktails.data.map((cocktail, index) => {
+					return (
+						<Cocktailshomo cocktail= {cocktail}/>
+					);
+				})}
+			</section>
+		);
+	}
+}
+
+{
+	/* <CocktailComponent /> */
+}
+
+export default AppWithClass;
+
+
+
+
+
+
+
+
+
+// import { Component, useEffect, useState } from "react";
+// import { fetchCocktails } from "./api/cocktails";
+// import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+
+// const cocktailsDefaultState = {
+// 	data: [],
+// 	isLoading: true,
+// 	isLoaded: false,
+// 	isError: false,
+// };
+
+// const AppWithClass = () => {
+// 	const [cocktails, setCocktails] = useState(cocktailsDefaultState);
+// 	console.log(cocktails);
+// 	useEffect(() => {
+// 		getCocktailsData();
+// 	}, []);
+
+// 	const getCocktailsData = async () => {
+// 		try {
+// 			const cocktails = await fetchCocktails();
+// 			console.log(cocktails);
+// 			setCocktails({
+// 				data: cocktails,
+// 				isLoading: false,
+// 				isLoaded: true,
+// 				isError: false,
+// 			});
+// 		} catch (error) {
+// 			setCocktails({
+// 				data: [],
+// 				isLoading: false,
+// 				isLoaded: true,
+// 				isError: true,
+// 			});
+// 		}
+// 	};
+
+// 	const handleDelete = (id) => {
+// 		const filteredArr = cocktails.data.filter(
+// 			(cocktail) => cocktail.idDrink !== id
+// 		);
+// 		setCocktails({
+// 			data: filteredArr,
+// 			isLoading: false,
+// 			isLoaded: true,
+// 			isError: false,
+// 		});
+// 	};
+
+// 	if (cocktails.isLoading) {
+// 		return <h1>Loading...</h1>;
+// 	}
+
+// 	if (cocktails.isError) {
+// 		return <h1>error</h1>;
+// 	}
+
+// 	if (!cocktails.data.length) {
+// 		return <h1>No cocktails found</h1>;
+// 	}
+
+// 	return (
+// 		<section className="cocktails-container">
+// 			{cocktails.data.map((cocktail) => (
+// 				<CocktailContainer
+// 					onDelete={handleDelete}
+// 					key={cocktail.idDrink}
+// 					cocktail={cocktail}
+// 				/>
+// 			))}
+// 		</section>
+// 	);
+// };
 
 // class AppWithClassx extends Component {
 // 	constructor() {
@@ -155,7 +248,7 @@ const AppWithClass = () => {
 	/* <CocktailComponent /> */
 }
 
-export default AppWithClass;
+// export default AppWithClass;
 
 // componentDidUpdate(prevProps, prevState) {
 // 	console.log("prevState", prevState);
