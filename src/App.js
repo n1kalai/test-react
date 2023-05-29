@@ -42,6 +42,7 @@ const App = () => {
 		</form>
 		
 		{
+			user.write ==="" || user.result === null ? <div>not found</div>:
 		user.result?.map(ele =>{
 			return <ul><li>{ele.strDrink}</li></ul>
 		} )
