@@ -1,48 +1,59 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Languages } from "./components/Languages";
 import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
-
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+  const [cocktails, setCocktails] = useState([]);
+  const [findCocktails, setFindCocktails] = useState("");
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
+  useEffect(() => {
+    const fetchCocktails = async () => {
+      try {
+        const res = await fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${findCocktails}`
+        );
 
-	const onClick = () => {
-		setName(Math.random());
-	};
+        const data = await res.json();
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
+        setCocktails(data.drinks || []);
+        console.log(data.drinks);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCocktails();
+  }, [findCocktails]);
 
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
+  return (
+    <div>
+      <input
+        placeholder="search cocktail..."
+        className="input"
+        type="search"
+        onChange={(e) => setFindCocktails(e.target.value)}
+      />
+      <div className="all-cocks">
+        {cocktails
+          .filter((cocktail) => {
+            if (findCocktails === "") {
+              return cocktail;
+            } else if (
+              cocktail.strDrink
+                .toLowerCase()
+                .includes(findCocktails.toLocaleLowerCase())
+            ) {
+              return cocktail;
+            }
+          })
+          .map((cocktail) => (
+            <div key={cocktail.idDrink}>
+              <h1>{cocktail.strDrink}</h1>
+              <p>{cocktail.strCategory}</p>
+              <img className="img" src={cocktail.strDrinkThumb} />
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default App;
