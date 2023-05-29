@@ -4,66 +4,60 @@ import { useState } from "react";
 const App = () => {
 	const [user, setUser] = useState({
 		first_name: "",
-		last_name: "",
-		number: 1231231,
-		sex: "",
+		// last_name: "",
+		// number: 1231231,
+		// sex: "",
+		list:[],
 	});
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
-
+		
 		setUser((prevState) => ({
 			...prevState,
 			[name]: value,
+			
 		}));
+		
 	};
+	const btn =()=>{
+		// console.log(user.first_name)
+		setUser((prevState)=>({
+			...prevState,
+			list:[...prevState.list,user.first_name]
+		}))
+		// return(<h1>{user.first_name}</h1>)
+	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(user);
 	};
+	const onDelete =(index)=>{
+		setUser((prevstate)=>({
+			...prevstate,
+			list:[...prevstate.list.slice(0,index),...prevstate.list.slice(index+1)]
+		}))
+	}
 
-	return (
+	return (<>
 		<form onSubmit={handleSubmit}>
-			<legend>registration</legend>
+			<legend>TO DO LIST</legend>
 			<input
-				placeholder="name"
+				id="opa"
+				placeholder="add item"
 				name="first_name"
 				value={user.first_name}
 				onChange={handleInputChange}
 			/>
-			<input
-				onChange={handleInputChange}
-				placeholder="last name"
-				name="last_name"
-				value={user.last_name}
-			/>
-			<div>
-				<div>your sex</div>
-				<div>male</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="male"
-					name="sex"
-				/>
-				<div>female</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="female"
-					name="sex"
-				/>
-				<div>other</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="other"
-					name="sex"
-				/>
-			</div>
-			<button>submit</button>
+			
+			
 		</form>
+		<button onClick={()=>btn()}>ADD</button>
+		{user.list.map((ele)=>{
+			return(<div onClick={()=>onDelete(user.list.indexOf(ele))}>{ele}</div>)
+		})}
+		</>
 	);
 };
 
