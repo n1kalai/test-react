@@ -3,67 +3,60 @@ import { useState } from "react";
 
 const App = () => {
 	const [user, setUser] = useState({
-		first_name: "",
-		last_name: "",
-		number: 1231231,
-		sex: "",
+		searchText: "",
+		coctailList: [],
+		
 	});
 
-	const handleInputChange = (event) => {
+	const handleInputChange = async (event) => {
 		const { name, value } = event.target;
 
 		setUser((prevState) => ({
 			...prevState,
 			[name]: value,
 		}));
+		const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`);
+		const data = await response.json();
+		setUser((prevState) => ({
+			...prevState,
+			coctailList: data.drinks,
+		}))
 	};
 
-	const handleSubmit = (event) => {
+	
+	
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(user);
-	};
 
+
+
+		console.log(user.coctailList);
+	};
+	
 	return (
-		<form onSubmit={handleSubmit}>
+		<div>
+
+		<form>
 			<legend>registration</legend>
 			<input
-				placeholder="name"
-				name="first_name"
-				value={user.first_name}
+				placeholder="cocktail name"
+				name="searchText"
+				id="searchText"
+				value={user.searchText}
 				onChange={handleInputChange}
 			/>
-			<input
-				onChange={handleInputChange}
-				placeholder="last name"
-				name="last_name"
-				value={user.last_name}
-			/>
-			<div>
-				<div>your sex</div>
-				<div>male</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="male"
-					name="sex"
-				/>
-				<div>female</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="female"
-					name="sex"
-				/>
-				<div>other</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="other"
-					name="sex"
-				/>
-			</div>
-			<button>submit</button>
-		</form>
+			
+			</form>
+			{
+			user.searchText.trim() === "" || user.coctailList === null ? <li>not found</li>:	user.coctailList?.map((coctail) =>
+			<li key={coctail.idDrink}>{coctail.strDrink}</li>
+			)
+		}
+
+		</div>
+			
+					
+
 	);
 };
 
