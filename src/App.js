@@ -1,21 +1,25 @@
 import "./App.css";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const App = () => {
 	const [user, setUser] = useState({
-		first_name: "",
-		last_name: "",
-		number: 1231231,
-		sex: "",
+		write:"",
+		result:[]
 	});
-
-	const handleInputChange = (event) => {
+	const handleInputChange  = async (event) => {
 		const { name, value } = event.target;
 
 		setUser((prevState) => ({
 			...prevState,
 			[name]: value,
+
 		}));
+		const wordfetch = await fetch (`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+		const data = await wordfetch.json()
+		setUser({ 
+			result:data.drinks
+	})
+		
 	};
 
 	const handleSubmit = (event) => {
@@ -24,46 +28,25 @@ const App = () => {
 	};
 
 	return (
+		<div>
 		<form onSubmit={handleSubmit}>
-			<legend>registration</legend>
+			<legend>LIVE SEARCH-np</legend>
 			<input
-				placeholder="name"
+				placeholder="Go  search"
 				name="first_name"
 				value={user.first_name}
 				onChange={handleInputChange}
 			/>
-			<input
-				onChange={handleInputChange}
-				placeholder="last name"
-				name="last_name"
-				value={user.last_name}
-			/>
-			<div>
-				<div>your sex</div>
-				<div>male</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="male"
-					name="sex"
-				/>
-				<div>female</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="female"
-					name="sex"
-				/>
-				<div>other</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="other"
-					name="sex"
-				/>
-			</div>
-			<button>submit</button>
+			
+			
 		</form>
+		
+		{
+		user.result?.map(ele =>{
+			return <ul><li>{ele.strDrink}</li></ul>
+		} )
+		}
+		</div>
 	);
 };
 
