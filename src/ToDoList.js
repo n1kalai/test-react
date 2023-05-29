@@ -5,6 +5,9 @@ const ToDoList = () => {
 	const [toDoItem, setToDoItem] = useState([]);
 
 	function addItem() {
+		if(item.trim() === "") {
+			return;
+		}
         const newItem = {
 			id: Math.floor(Math.random() * 1000),
 			value: item
@@ -30,9 +33,9 @@ const ToDoList = () => {
 			
 			<button className="add_button" onClick={() => addItem()}>Add</button>
 			<ul>
-				{toDoItem.map(needToDo => (
+				{toDoItem.map((needToDo, index) => (
 					<li key={needToDo.id}>
-						<button className="del_button" onClick={() => deleteItem(needToDo.id)}>{needToDo.value}</button>
+						<button className="del_button" onClick={() => deleteItem(needToDo.id)}>{index+1} {needToDo.value}</button>
 					</li>
 				))}
 			</ul>

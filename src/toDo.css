@@ -36,6 +36,10 @@ input {
     border: none;
 }
 
+.add_button:hover {
+    cursor: pointer;
+}
+
 ul {
     margin-left: auto;
     margin-right: auto;
