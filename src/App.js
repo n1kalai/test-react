@@ -2,68 +2,75 @@ import "./App.css";
 import { useState } from "react";
 
 const App = () => {
-	const [user, setUser] = useState({
-		first_name: "",
-		last_name: "",
-		number: 1231231,
-		sex: "",
-	});
-
-	const handleInputChange = (event) => {
-		const { name, value } = event.target;
-
-		setUser((prevState) => ({
-			...prevState,
-			[name]: value,
-		}));
-	};
+	const [todo, setTodo] = useState("");
+	const [todoItems, setTodoItems] = useState([
+		"Learn React",
+		"Learn Vue",
+		"Learn Node",
+	]);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(user);
+		if (todo.trim() === "") {
+			return;
+		}
+		setTodoItems((oldTodos) => [...oldTodos, todo]);
+		setTodo("");
+	};
+
+	const handleInputChange = (e) => {
+		setTodo(e.target.value);
+	};
+
+	// 1 varianti
+	// const handleDeleteTodo = (index) => {
+	// 	const newTodoItems = todoItems.filter((todoItem, ind) => ind !== index);
+	// 	setTodoItems(newTodoItems);
+	// };
+
+	// 2 varianti
+	// const handleDeleteTodo = (todoName) => {
+	// 	const newTodoItems = [...todoItems];
+	// 	const todoToDeleteIndex = newTodoItems.indexOf(todoName);
+	// 	delete newTodoItems[todoToDeleteIndex];
+	// 	// newTodoItems.splice(todoToDeleteIndex, 1);
+	// 	// newTodoItems.slice(todoToDeleteIndex, 1);
+	// 	setTodoItems(newTodoItems);
+	// };
+
+	const handleDeleteTodo = (index) => {
+		if (todoItems.length === 1) {
+			alert("ver washliii");
+			return;
+		}
+		const newTodoItems = todoItems.filter((todoItem, ind) => ind !== index);
+		setTodoItems(newTodoItems);
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<legend>registration</legend>
-			<input
-				placeholder="name"
-				name="first_name"
-				value={user.first_name}
-				onChange={handleInputChange}
-			/>
-			<input
-				onChange={handleInputChange}
-				placeholder="last name"
-				name="last_name"
-				value={user.last_name}
-			/>
-			<div>
-				<div>your sex</div>
-				<div>male</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="male"
-					name="sex"
-				/>
-				<div>female</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="female"
-					name="sex"
-				/>
-				<div>other</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="other"
-					name="sex"
-				/>
-			</div>
-			<button>submit</button>
-		</form>
+		<div className="todo-container">
+			<form onSubmit={handleSubmit}>
+				<input onChange={handleInputChange} value={todo} />
+				<button>Add</button>
+			</form>
+			<ul>
+				{todoItems.map((item, index) => (
+					// 1 variant
+					// <li onClick={() => handleDeleteTodo(index)} key={item}>
+					// 	{item}
+					// </li>
+
+					// 2 variant
+					// <li onClick={() => handleDeleteTodo(item)} key={item}>
+					// 	{item}
+					// </li>
+
+					<li onClick={() => handleDeleteTodo(index)} key={item}>
+						<span>{item}</span>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 };
 
