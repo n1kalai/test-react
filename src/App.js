@@ -3,19 +3,27 @@ import { useState } from "react";
 
 const App = () => {
 	const [user, setUser] = useState({
-		first_name: "",
-		last_name: "",
-		number: 1231231,
-		sex: "",
+		val:"",
+		list:[],
 	});
 
-	const handleInputChange = (event) => {
+	const handleInputChange = async(event) => {
 		const { name, value } = event.target;
 
 		setUser((prevState) => ({
 			...prevState,
 			[name]: value,
 		}));
+		const res=await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+		const data=await res.json()
+		// return data
+		setUser((prevstate)=>({
+			...prevstate,
+			list:data.drinks
+			
+		}))
+		console.log(user.list)
+		
 	};
 
 	const handleSubmit = (event) => {
@@ -23,47 +31,28 @@ const App = () => {
 		console.log(user);
 	};
 
-	return (
+	return (<>
 		<form onSubmit={handleSubmit}>
-			<legend>registration</legend>
+			<legend>LIVE SEARCH</legend>
 			<input
-				placeholder="name"
-				name="first_name"
-				value={user.first_name}
+				placeholder="text"
+				name="val"
+				value={user.val}
 				onChange={handleInputChange}
 			/>
-			<input
-				onChange={handleInputChange}
-				placeholder="last name"
-				name="last_name"
-				value={user.last_name}
-			/>
-			<div>
-				<div>your sex</div>
-				<div>male</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="male"
-					name="sex"
-				/>
-				<div>female</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="female"
-					name="sex"
-				/>
-				<div>other</div>
-				<input
-					type="radio"
-					onChange={handleInputChange}
-					value="other"
-					name="sex"
-				/>
-			</div>
-			<button>submit</button>
+
 		</form>
+
+		<button>submit</button>
+		{user.val===""?<div>NOT FOUND</div>:user.list?.map((ele)=>{
+			return(<>
+			
+				{ele.strDrink.includes(user.val)?<div key={ele.idDrink}>{ele.strDrink}</div>:<div>NOT FOUND</div>}
+				
+				</>
+			)
+		})}
+		</>
 	);
 };
 
