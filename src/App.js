@@ -1,47 +1,76 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
-
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+import { useState } from "react";
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+	const [todo, setTodo] = useState("");
+	const [todoItems, setTodoItems] = useState([
+		"Learn React",
+		"Learn Vue",
+		"Learn Node",
+	]);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		if (todo.trim() === "") {
+			return;
+		}
+		setTodoItems((oldTodos) => [...oldTodos, todo]);
+		setTodo("");
 	};
 
-	const onClick = () => {
-		setName(Math.random());
+	const handleInputChange = (e) => {
+		setTodo(e.target.value);
 	};
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
+	// 1 varianti
+	// const handleDeleteTodo = (index) => {
+	// 	const newTodoItems = todoItems.filter((todoItem, ind) => ind !== index);
+	// 	setTodoItems(newTodoItems);
+	// };
+
+	// 2 varianti
+	// const handleDeleteTodo = (todoName) => {
+	// 	const newTodoItems = [...todoItems];
+	// 	const todoToDeleteIndex = newTodoItems.indexOf(todoName);
+	// 	delete newTodoItems[todoToDeleteIndex];
+	// 	// newTodoItems.splice(todoToDeleteIndex, 1);
+	// 	// newTodoItems.slice(todoToDeleteIndex, 1);
+	// 	setTodoItems(newTodoItems);
+	// };
+
+	const handleDeleteTodo = (index) => {
+		if (todoItems.length === 1) {
+			alert("ver washliii");
+			return;
+		}
+		const newTodoItems = todoItems.filter((todoItem, ind) => ind !== index);
+		setTodoItems(newTodoItems);
+	};
 
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+		<div className="todo-container">
+			<form onSubmit={handleSubmit}>
+				<input onChange={handleInputChange} value={todo} />
+				<button>Add</button>
+			</form>
+			<ul>
+				{todoItems.map((item, index) => (
+					// 1 variant
+					// <li onClick={() => handleDeleteTodo(index)} key={item}>
+					// 	{item}
+					// </li>
+
+					// 2 variant
+					// <li onClick={() => handleDeleteTodo(item)} key={item}>
+					// 	{item}
+					// </li>
+
+					<li onClick={() => handleDeleteTodo(index)} key={item}>
+						<span>{item}</span>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 };
 
