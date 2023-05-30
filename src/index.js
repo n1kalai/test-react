@@ -4,12 +4,15 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppWithClass from "./AppWithClass";
+import LiveSearch from "./LiveSearch";
+import Quiz from "./components/quizNJ";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-	<AppWithClass />
-	// </React.StrictMode>
+  <React.StrictMode>
+    {/* <LiveSearch /> */}
+    <Quiz />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
