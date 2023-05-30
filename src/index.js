@@ -5,11 +5,12 @@ import reportWebVitals from "./reportWebVitals";
 // import App from "./App";
 // import AppWithClass from "./AppWithClass";
 import LiveSearch from "./LiveSearch";
+import Timer from "./Timer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<LiveSearch />
+	<Timer />
 	// </React.StrictMode>
 );
 
