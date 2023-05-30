@@ -1,13 +1,42 @@
-.cocktails-container {
-	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	.cocktail-container {
-		display: flex;
-		flex-direction: column;
-		width: 360px;
-		& img {
-			width: 360px;
-		}
-	}
+body {
+  background-color: aquamarine;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  .quiz {
+    p {
+      font-size: 20px;
+    }
+
+    .answers-buttons {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        width: 20%;
+        height: 30px;
+        border-radius: 10px;
+        background-color: antiquewhite;
+        font-weight: bolder;
+        border: none;
+
+        &.correct {
+          background-color: green;
+          color: white;
+        }
+
+        &.incorrect {
+          color: white;
+          background-color: red;
+        }
+      }
+
+      button:hover {
+        cursor: pointer;
+        background-color: rgb(18, 15, 208);
+        color: white;
+      }
+    }
+  }
 }
