@@ -1,6 +1,7 @@
 
 import "./App.css";
-import TodoList from "./components/to-do-list";
+import CocktailComponent from "./components/cocktails";
+
 
 
 const App = () => {
@@ -8,7 +9,7 @@ const App = () => {
 
 	return (
 	<div className="App">
-    <TodoList/>
+    <CocktailComponent/>
 	</div>
 	);
 };
