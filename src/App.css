@@ -1,63 +1,70 @@
-body{
+*{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-.App {
-  background-color: #2B2726;
-  color: #F0EC8B;
-  height: auto;
+
+
+.timer-Container{
+	
+  height:100vh;
+  background-image: url(https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
   width: 100vw;
-  display:flex;
+}
+
+.timer{
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+  justify-content: center;
+  padding-bottom: 7em;
+  padding-top: 2em;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem ;
+}
+
+.timer div:first-child {
+  text-align: center;
+}
+
+.timer-icon{
+  font-size: 8em;
+}
+
+.h2countdown{
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+
+.timer-last-div p {
+  color: #f8f8f8;
+}
+
+.timer div:last-child{
+  display: grid;
+  grid-template-columns:repeat(7,1fr) ;
+  margin-top: 3em;
+  padding: 3em;
+  text-align: center;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+section p:first-child, .timer div:last-child span {
+  font-size: 3em;
+}
+
+
+.timer div:last-child span {
+  margin-bottom: 2.5rem;
 } 
 
-.cocktailCont{
-	margin: 2rem;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	gap:1rem;
-	height: auto;
-  }
-  .cocktails{
-	height: 30rem;
-	width: 22rem;
-	overflow: hidden;
-	box-shadow: 5px 5px 20px black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	flex-wrap: wrap;
-	text-align: center;
-	cursor: pointer;
-  }
-  
-  .cocktails:hover{
-	box-shadow: 10px 10px 30px black;
-  }
-  
-  
-  .cocktails img{
-	width: 100%;
-	height: 300px;
-  }
-  
-  
-  .wrp{
-	display: flex;
-	flex-direction: column;
-	height: auto;
-   
-  }
-  
-  .wrp input {
-	height: 2rem;
-	margin: 1rem;
-  }

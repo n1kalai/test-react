@@ -1,6 +1,6 @@
 
 import "./App.css";
-import CocktailComponent from "./components/cocktails";
+import CountdownTimer from "./components/countdown";
 
 
 
@@ -9,7 +9,7 @@ const App = () => {
 
 	return (
 	<div className="App">
-    <CocktailComponent/>
+    <CountdownTimer/>
 	</div>
 	);
 };
