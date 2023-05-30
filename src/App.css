@@ -1,42 +1,70 @@
-.App {
-	display: flex;
-	gap: 20px;
-}
-.languages {
-	border: solid 1px lightgray;
-	box-shadow: 0 0 10px gray;
-}
-.languages p {
-	background-color: red;
-	text-align: center;
-}
-.App img {
-	height: 200px;
-	aspect-ratio: 4/4;
-	pointer-events: none;
-}
-.number {
-	font-size: 40px;
-	text-align: center;
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
+
+
+.timer-Container{
+	
+  height:100vh;
+  background-image: url(https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  width: 100vw;
 }
 
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+.timer{
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 7em;
+  padding-top: 2em;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem ;
 }
 
-.App-link {
-	color: #61dafb;
+.timer div:first-child {
+  text-align: center;
 }
+
+.timer-icon{
+  font-size: 8em;
+}
+
+.h2countdown{
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+
+.timer-last-div p {
+  color: #f8f8f8;
+}
+
+.timer div:last-child{
+  display: grid;
+  grid-template-columns:repeat(7,1fr) ;
+  margin-top: 3em;
+  padding: 3em;
+  text-align: center;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+section p:first-child, .timer div:last-child span {
+  font-size: 3em;
+}
+
+
+.timer div:last-child span {
+  margin-bottom: 2.5rem;
+} 
+
