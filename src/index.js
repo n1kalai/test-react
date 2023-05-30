@@ -4,12 +4,16 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppWithClass from "./AppWithClass";
+import LiveSearch from "./LiveSearch";
+import CountdownTimer from "./components/timerComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-	<AppWithClass />
-	// </React.StrictMode>
+  <React.StrictMode>
+    {/* <LiveSearch /> */}
+
+    <CountdownTimer />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
