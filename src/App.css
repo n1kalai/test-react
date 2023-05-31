@@ -1,70 +1,82 @@
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+body{
+	background-color: #1b0112;
 }
 
+.App {
+	text-align: center;
+	background-color: #1b0112;
+	width: 100%;
+	height: 100%;
+	color: #9D0B51;
+  }
+  
+  .question-card {
+	margin: 0 auto;
+	width: 80%; 
+	height: auto;
+	background-color: #5A0834;
+	padding: 16px;
+	border-radius: 16px;
+	color:  antiquewhite;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+	 rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  }
+  
+  ul {
+	list-style: none;
+  }
+  
+  li {
+	margin-top: 8px;
+	background-color: #f089ba ;
+	padding: 16px;
+	border: 3px solid palevioletred;
+	border-radius: 20px;
+	font-size: 20px;
+	cursor: pointer;
+  }
+  
+  .question-text {
+	color: rgb(225, 114, 151);
+	font-size: 24px;
+  }
 
+  li:hover{
+	box-shadow: 1px 1px 20px black;
+  }
+  
 
-.timer-Container{
-	
-  height:100vh;
-  background-image: url(https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  width: 100vw;
-}
+  
+  .final-results {
 
-.timer{
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 7em;
-  padding-top: 2em;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 1rem ;
-}
+	margin: 0 auto;
+	width: 50%; 
+	height: auto;
+	margin-top: 64px;
+	background-color: #9D0B51;
+	padding: 16px;
+	border-radius: 16px;
+	color: white;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+	  rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  }
+  
+  button {
+	background-color: rgb(91, 22, 45); 
+	border: none;
+	color: white;
+	padding: 16px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 24px;
+	cursor: pointer;
+  }
 
-.timer div:first-child {
-  text-align: center;
-}
+  button:hover{
+	box-shadow: 5px 2px 20px black;
+  }
 
-.timer-icon{
-  font-size: 8em;
-}
-
-.h2countdown{
-  font-weight: 600;
-  margin-bottom: 0.5em;
-}
-
-
-.timer-last-div p {
-  color: #f8f8f8;
-}
-
-.timer div:last-child{
-  display: grid;
-  grid-template-columns:repeat(7,1fr) ;
-  margin-top: 3em;
-  padding: 3em;
-  text-align: center;
-  align-items: center;
-  border: 1px solid white;
-  border-radius: 3px;
-}
-
-section p:first-child, .timer div:last-child span {
-  font-size: 3em;
-}
-
-
-.timer div:last-child span {
-  margin-bottom: 2.5rem;
-} 
 
