@@ -1,42 +1,84 @@
+body {
+	background-color:rgb(225, 194, 255)
+}
+
 .App {
-	display: flex;
-	gap: 20px;
-}
-.languages {
-	border: solid 1px lightgray;
-	box-shadow: 0 0 10px gray;
-}
-.languages p {
-	background-color: red;
-	text-align: center;
-}
-.App img {
-	height: 200px;
-	aspect-ratio: 4/4;
-	pointer-events: none;
-}
-.number {
-	font-size: 40px;
 	text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
+.question-card {
+	margin: 0 auto;
+	width: 50%;
+	height: auto;
+	background-color: rgb(218, 218, 218);
+	padding: 16px;
+	border-radius: 16px;
 	color: white;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
-.App-link {
-	color: #61dafb;
+.question-card h2 {
+	color:rgba(0, 0, 0, 0.637);
+}
+
+ul {
+	list-style: none;
+	padding-left: 0px;
+}
+
+li {
+	color: rgb(180, 247, 72);
+	font-weight: 800;
+	margin-top: 8px;
+	background-color: rgb(100, 100, 100);
+	padding: 16px;
+	border: 3px solid rgb(155, 155, 155);
+	border-radius: 20px;
+	font-size: 20px;
+}
+
+li:hover {
+	cursor: pointer;
+}
+
+.question-text {
+	color: rgb(80, 0, 146);
+	font-size: 24px;
+}
+
+.final-results {
+	margin: 0 auto;
+	width: 50%;
+	height: auto;
+	margin-top: 64px;
+	background-color: gray;
+	padding: 16px;
+	border-radius: 16px;
+	color: white;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+span {
+	font-size: 24px;
+	font-weight: 600;
+	color:rgb(255, 246, 127)
+}
+
+button {
+	background-color: red;
+	border: none;
+	color: white;
+	padding: 16px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 24px;
+}
+
+button:hover {
+	cursor: pointer;
 }
