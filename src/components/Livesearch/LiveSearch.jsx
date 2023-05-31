@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+import { CocktailContainer } from "../cocktails/CocktailContainer";
+
 
 const fetchURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 

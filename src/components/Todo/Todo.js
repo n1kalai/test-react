@@ -1,7 +1,7 @@
-import "./App.css";
+
 import { useState } from "react";
 
-const App = () => {
+const Todo = () => {
 	const [todo, setTodo] = useState("");
 	const [todoItems, setTodoItems] = useState([
 		"Learn React",
@@ -74,4 +74,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default Todo;
