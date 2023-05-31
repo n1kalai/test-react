@@ -1,48 +1,56 @@
-import logo from "./logo.svg";
+
+import React, { useState } from "react";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import FinalResults from "./components/final";
+import QuestionCard from "./components/questioncard";
+import Questions from "./components/questions";
 
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
 
-const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
 
-	const onClick = () => {
-		setName(Math.random());
-	};
+function App() {
+  const [showResults, setShowResults] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
 
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
 
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
-};
+  const optionClicked = (isCorrect) => {
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
+    if (currentQuestion + 1 < Questions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResults(true);
+    }
+  };
+
+  const restartGame = () => {
+    setScore(0);
+    setCurrentQuestion(0);
+    setShowResults(false);
+  };
+
+  return (
+    <div className="App">
+      <h1>Big Bang Theory Quizz</h1>
+      <h2>Score: {score}</h2>
+      {showResults ? (
+        <FinalResults
+          score={score}
+          totalQuestions={Questions.length}
+          restartGame={restartGame}
+        />
+      ) : (
+        <QuestionCard
+          question={Questions[currentQuestion]}
+          optionClicked={optionClicked}
+        />
+      )}
+    </div>
+  );
+}
 
 export default App;
+
