@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppWithClass from "./AppWithClass";
 import LiveSearch from "./LiveSearch";
+import Appfunc from "./homework";
+import Func from "./homeworktwo";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<LiveSearch />
+		<Appfunc />
 	</React.StrictMode>
 );
 
