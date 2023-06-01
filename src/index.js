@@ -1,17 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-// import "./index.scss";
-import "./carousel.css";
-// import App from "./App";
-// import AppWithClass from "./AppWithClass";
-// import Quiz from "./quiz";
-import Carousel from "./Carousel";
+import "./slider.css";
+import Slider from "./Slider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<Carousel />
+	<Slider />
 	// </React.StrictMode>
 );
 
