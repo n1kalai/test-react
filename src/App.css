@@ -1,42 +1,109 @@
+body{
+	background-color: rgb(78, 24, 42);
+}
+
 .App {
 	display: flex;
-	gap: 20px;
-}
-.languages {
-	border: solid 1px lightgray;
-	box-shadow: 0 0 10px gray;
-}
-.languages p {
-	background-color: red;
-	text-align: center;
-}
-.App img {
-	height: 200px;
-	aspect-ratio: 4/4;
-	pointer-events: none;
-}
-.number {
-	font-size: 40px;
-	text-align: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: antiquewhite;
+	font-size: 2rem;
+	flex-wrap: wrap;
+}
+
+
+.carousel {
+	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: calc(10px + 2vmin);
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	box-shadow: 5px 5px 30px black;
+  }
+  
+  .slide {
+	width: 100%;
+	min-height: 40vh;
+	object-fit: cover;
+  }
+  
+  .arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent;
+	border: none;
 	color: white;
-}
+	font-size: 2rem;
+	cursor: pointer;
+  }
+  
+  .left-arrow {
+	left: 10px;
+	text-shadow: 2px 2px 10px black;
+	cursor: pointer;
+  }
+  
+  .right-arrow {
+	right: 10px;
+	text-shadow: 2px 2px 10px black;
+     cursor: pointer;
+  }
 
-.App-link {
-	color: #61dafb;
-}
+
+  .carousel-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	height: 60vh;
+	margin-top: 2rem;
+	box-shadow: 5px 5px 30px black;
+	margin-bottom: 2rem;
+	box-sizing: border-box;
+	
+  }
+  
+  .carousel-left-column {
+	height: 100%;
+	width: 100%;
+	flex: 3;
+	display: flex;
+	justify-content: flex-start;
+  }
+  
+  .carousel-selected-image {
+	width: 100%;
+	object-fit: cover;
+  }
+  
+  .carousel-right-column {
+	display: flex;
+	flex: 1;
+	flex-wrap: wrap;
+	justify-content: center;
+	overflow: scroll;
+	height:60vh ;
+  }
+  
+  .carousel-pic {
+	width: 80%;
+	height: 150px;
+	object-fit: cover;
+	margin: 5px;
+	cursor: pointer;
+	border-radius: 20px;
+  }
+
+  .carousel-thumbnail:hover{
+	box-shadow: 5px 5px 20px black;
+  }
+  
+  .carousel-active-thumbnail {
+	border: 2px solid blue;
+  }
