@@ -14,7 +14,12 @@ const Slider = () => {
             <img src={images[bigIndex]} className="main_img" alt="bigimage" />
             <div className="sm_img_column">
                 {images.map((element, ind) => (
-                    <img src={element} key={ind} className="sm_img" alt="smallimage" onClick={() => expandImage(ind)} />
+                    <img src={element} 
+                        key={ind} 
+                        className="sm_img" 
+                        style={{border: bigIndex === ind ? "solid 3px rgba(17, 17, 17, 0.689)" : null}}
+                        alt="smallimage" 
+                        onClick={() => expandImage(ind)} />
                 ))}
             </div>
         </div>
