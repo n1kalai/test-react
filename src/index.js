@@ -5,11 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppWithClass from "./AppWithClass";
 import LiveSearch from "./LiveSearch";
+import { Slider } from "./components/Slider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<LiveSearch />
+		<Slider/>
 	</React.StrictMode>
 );
 
