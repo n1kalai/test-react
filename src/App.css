@@ -1,4 +1,4 @@
-.App {
+/* .App {
 	display: flex;
 	gap: 20px;
 }
@@ -39,4 +39,23 @@
 
 .App-link {
 	color: #61dafb;
+} */
+
+
+.container{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+
+}
+.meore-cont{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+
+
+}
+
+.suratebi{
+	width: 100px;
 }
