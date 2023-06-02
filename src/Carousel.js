@@ -55,7 +55,7 @@ const Carousel = () => {
             <button onClick={backSlide}>
                 <img className="arrow" src={back} alt="back arrow" />
             </button>
-            {images.slice(imgIndex, (imgIndex+5)).map((cocktail, ind) => 
+            {[...images].slice(imgIndex, (imgIndex+5)).map((cocktail, ind) => 
                 (<img src={cocktail} key={ind} className="cocktail_img" alt={ind} />)
             )}
             <button onClick={nextSlide}>
