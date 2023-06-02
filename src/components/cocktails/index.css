@@ -1,0 +1,26 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+  }
+  
+  .conte{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 322px;
+    height: 322px;
+    background-color: aqua;
+    border-radius: 120px;
+  }
+  button {
+    width: 70px;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 7px;
+    border-style: none;
+  }
