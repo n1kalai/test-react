@@ -2,19 +2,21 @@
 	display: flex;
 	gap: 20px;
 }
+
 .languages {
 	border: solid 1px lightgray;
 	box-shadow: 0 0 10px gray;
 }
+
 .languages p {
 	background-color: red;
 	text-align: center;
 }
+
 .App img {
 	height: 200px;
-	aspect-ratio: 4/4;
-	pointer-events: none;
 }
+
 .number {
 	font-size: 40px;
 	text-align: center;
@@ -39,4 +41,50 @@
 
 .App-link {
 	color: #61dafb;
+}
+
+/* carousel */
+.carousel {
+	position: relative;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.image {
+	width: 500px;
+	height: 450px;
+	border-radius: 10px;
+}
+
+.right-arrow {
+	position: absolute;
+	top: 45%;
+	right: 360px;
+	font-size: 3rem;
+	color: #000;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.left-arrow {
+	position: absolute;
+	top: 45%;
+	left: 360px;
+	font-size: 3rem;
+	color: #000;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.slide {
+	opacity: 0;
+	transition-duration: 1s ease;
+}
+
+.slide.active {
+	opacity: 1;
+	transition-duration: 1s;
+	transform: scale(1.08);
 }

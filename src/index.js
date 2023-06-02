@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./components/Todo/Todo";
+// import App from "./components/Todo/Todo";
 import reportWebVitals from "./reportWebVitals";
-
-import AppWithClass from "./AppWithClass";
-import LiveSearch from "./LiveSearch";
-import Quiz from "./components/quiz/Quiz";
+import App from "./App";
+// import AppWithClass from "./AppWithClass";
+// import LiveSearch from "./LiveSearch";
+// import Quiz from "./components/quiz/Quiz";
 
 
 
@@ -14,7 +14,7 @@ import Quiz from "./components/quiz/Quiz";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<Quiz />
+		<App />
 	// </React.StrictMode>
 );
 
