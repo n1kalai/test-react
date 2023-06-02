@@ -2,19 +2,23 @@
 	display: flex;
 	gap: 20px;
 }
+
 .languages {
 	border: solid 1px lightgray;
 	box-shadow: 0 0 10px gray;
 }
+
 .languages p {
 	background-color: red;
 	text-align: center;
 }
+
 .App img {
 	height: 200px;
 	aspect-ratio: 4/4;
 	pointer-events: none;
 }
+
 .number {
 	font-size: 40px;
 	text-align: center;
@@ -39,4 +43,49 @@
 
 .App-link {
 	color: #61dafb;
+}
+
+/* slider */
+body {
+	background-color: #343a44;
+}
+
+.slider {
+	display: flex;
+	justify-content: center;
+}
+
+.thumbnail-slider {
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	height: 90vh;
+	margin-left: 5px;
+}
+
+.thumbnail {
+	cursor: pointer;
+	border: 3px solid rgb(0, 0, 0);
+}
+
+.thumbnail img {
+	width: 120px;
+	height: 100px;
+}
+
+.thumbnail.active {
+	border: 3px solid rgb(98, 0, 255);
+}
+
+.main-slider {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-slider img {
+	max-width: 580px;
+	max-height: 580px;
+	border-radius: 8px;
+	box-shadow: 5px 5px 6px 0px #282c34;
 }
