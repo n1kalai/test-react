@@ -1,54 +1,52 @@
-import "./App.css";
-import { useLayoutEffect, useState } from "react";
+import react, {useState} from 'react'
+import './App.css';
 
-const App = () => {
-	const [user, setUser] = useState({
-		write:"",
-		result:[]
-	});
-	const handleInputChange  = async (event) => {
-		const { name, value } = event.target;
 
-		setUser((prevState) => ({
-			...prevState,
-			[name]: value,
 
-		}));
-		const wordfetch = await fetch (`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
-		const data = await wordfetch.json()
-		setUser({ 
-			result:data.drinks
-	})
-		
-	};
+let interval;
+function App() {
+  
+  const [second,setSecond] = useState()
+  
+  
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(user);
-	};
 
-	return (
-		<div>
-		<form onSubmit={handleSubmit}>
-			<legend>LIVE SEARCH-np</legend>
-			<input
-				placeholder="Go  search"
-				name="first_name"
-				value={user.first_name}
-				onChange={handleInputChange}
-			/>
-			
-			
-		</form>
-		
-		{
-			user.write ==="" || user.result === null ? <div>not found</div>:
-		user.result?.map(ele =>{
-			return <ul><li>{ele.strDrink}</li></ul>
-		} )
-		}
-		</div>
-	);
-};
+
+    const handleStart=()=>{
+      interval= setInterval(()=>{
+        setSecond(prevValue => prevValue - 1)
+
+    },1000)
+    }  
+  
+    if(second===0){
+      clearInterval(interval)
+    }
+  
+
+
+
+
+  
+  return (
+    <div className='conte'>
+    <div className='cont'>CountDown Timer</div>
+    <h1>
+      {second}
+    </h1>
+    
+      <input 
+     type="number"
+     onChange={(e)=>setSecond (e.target.value)}
+      placeholder='Enter Number'
+      >
+      </input>
+      <button onClick={handleStart}>start</button>
+      
+    
+    </div>
+  
+  );
+}
 
 export default App;
