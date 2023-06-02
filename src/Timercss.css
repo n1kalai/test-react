@@ -1,0 +1,19 @@
+.timerdiv {
+  height: 20px;
+  width: 5%;
+  color: red;
+  background: yellow;
+  text-align: center;
+}
+.btn {
+  height: 30px;
+  width: 50px;
+  background-color: gray;
+  color: red;
+  border-radius: 10px;
+}
+.inpt {
+  text-align: center;
+  background-color: white;
+  color: black;
+}
