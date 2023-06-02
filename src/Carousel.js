@@ -33,26 +33,32 @@ const Carousel = () => {
     const [imgIndex, setImgIndex] = useState(0);
 
     const nextSlide = () => {
+        if (imgIndex + 5 < images.length) {
+            setImgIndex(prevIndex => prevIndex + 1);
+            return;
+          }     
+          setImgIndex(0);
+      };
+
+    const backSlide = () => {
         if (imgIndex > 0) {
-            setImgIndex(imgIndex - 1);
-          }        
+            setImgIndex(prevIndex => prevIndex - 1);
+            return;
+          } 
+          setImgIndex(images.length-5)
       };
     
-      const backSlide = () => {
-        if (imgIndex + 5 < images.length) {
-            setImgIndex(imgIndex + 1);
-          }        
-      };
+      
 
     return (
         <div className="main_container">
-            <button onClick={nextSlide}>
+            <button onClick={backSlide}>
                 <img className="arrow" src={back} alt="back arrow" />
             </button>
             {images.slice(imgIndex, (imgIndex+5)).map((cocktail, ind) => 
                 (<img src={cocktail} key={ind} className="cocktail_img" alt={ind} />)
             )}
-            <button onClick={backSlide}>
+            <button onClick={nextSlide}>
             <img className="arrow" src={next} alt="back arrow" />
             </button>
         </div>
