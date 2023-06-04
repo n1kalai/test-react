@@ -14,7 +14,7 @@ const answers= [{
     corect: false,
 },
 {
-    answer: "shindleraa",
+    answer: "shindlera",
     corect: false,
 
 },];
