@@ -5,11 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppWithClass from "./AppWithClass";
 import Slider from "./components/Slider";
+import Quiz from "./Quiz";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-	<Slider/>
+	<Quiz/>
 	 </React.StrictMode>
 );
 
