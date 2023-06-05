@@ -32,7 +32,7 @@ const LiveSearch = () => {
 			isError: false,
 			data: [],
 		});
-		const response = await fetch(fetchURL + value);
+		const response = await fetch(`${fetchURL}${value}`);
 
 		const data = await response.json();
 		const { drinks } = data;
@@ -46,9 +46,9 @@ const LiveSearch = () => {
 
 	return (
 		<div>
-			live searh
+			Live Searcgih
 			<form>
-				<input value={search} onChange={handleSearch} />
+				<input placeholder="Search..." value={search} onChange={handleSearch} />
 			</form>
 			{drinks.isLoaded && drinks.data.length === 0 && <h1>No results</h1>}
 			{drinks.isLoading && <div>loading...</div>}
