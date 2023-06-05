@@ -1,13 +1,14 @@
-.cocktails-container {
-	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	.cocktail-container {
-		display: flex;
-		flex-direction: column;
-		width: 360px;
-		& img {
-			width: 360px;
-		}
-	}
+body {
+  display: flex;
+  justify-content: center;
+
+  .carousel-container {
+    display: flex;
+
+    button {
+      width: 80px;
+      border: none;
+      cursor: pointer;
+    }
+  }
 }
