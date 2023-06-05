@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const urls = [
+const url = [
   "https://www.thecocktaildb.com/images/media/drink/71t8581504353095.jpg",
   "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
   "https://www.thecocktaildb.com/images/media/drink/sih81u1504367097.jpg",
@@ -28,34 +28,27 @@ const urls = [
   "https://www.thecocktaildb.com/images/media/drink/3h9wv51504389379.jpg",
 ];
 
-function Carousel() {
+const Slider = () => {
   const [index, setIndex] = useState(0);
-
-  const handleNext = () => {
-    if (index < urls.length) {
-      setIndex((prevIndex) => prevIndex + 1);
-      return;
-    }
-    setIndex(0);
+  const handleClick = (index) => {
+    setIndex(index);
   };
-  const handleBack = () => {
-    if (index > 0) {
-      setIndex((prevIndex) => prevIndex - 1);
-      return;
-    }
-    setIndex(urls.length - 1);
-  };
-
   return (
     <div className="main-div">
-      <button onClick={handleBack} className="btn">
-        Back
-      </button>
-      <img className="img" src={urls[index]} alt="drinks" />
-      <button onClick={handleNext} className="btn">
-        Next
-      </button>
+      <img className="img1" src={url[index]} alt="" />
+      <div className="second-div">
+        {url.map((ur, index) => (
+          <img
+            className="img2"
+            src={ur}
+            alt=""
+            key={index}
+            onClick={() => handleClick(index)}
+          />
+        ))}
+      </div>
     </div>
   );
-}
-export default Carousel;
+};
+
+export default Slider;

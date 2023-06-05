@@ -1,0 +1,23 @@
+.main-div {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  gap: 2px;
+}
+.second-div {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  gap: 3px;
+}
+
+.img1 {
+  height: 400px;
+  width: 400px;
+  box-shadow: 0 0 10px gray;
+}
+.img2 {
+  height: 150px;
+  width: 150px;
+  box-shadow: 0 0 10px gray;
+}

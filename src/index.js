@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Carousel from "./carousel";
+import "./slider.css";
 import reportWebVitals from "./reportWebVitals";
-import "./carousel.css";
+import Slider from "./slider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <Carousel />
+  <Slider />
   // </React.StrictMode>
 );
 
