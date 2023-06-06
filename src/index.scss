@@ -11,3 +11,24 @@
 		}
 	}
 }
+
+.main_cont {
+	display: flex;
+	justify-content: space-between;
+}
+
+.data_length {
+	font-size: 45px;
+	text-align: center;
+	margin-right: 100px;
+}
+
+.odd_but {
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+.right_cont {
+	height: 250px;
+	margin-right: 50px;
+}
