@@ -1,8 +1,11 @@
-import { useState } from "react"
+// import { useState } from "react"
 
-export const useBoolean = () => {
-    const [boolean,setBoolean] = useState(false)
+// export const useCocktails = () => {
+//     const [cocktail,setCocktail] = useState("https://www.thecocktaildb.com/api/json/v1/1/search.php?s")
+//     const sumfun =(num) => {
+//         return num +1
+//     }
+//     return {cocktail, setCocktail,sumfun}
     
-    return {boolean, setBoolean}
 
-}
+// }
