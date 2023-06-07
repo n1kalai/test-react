@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./slider.css";
+import Hook from "./hook";
 import reportWebVitals from "./reportWebVitals";
-import Slider from "./slider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <Slider />
+  <Hook />
   // </React.StrictMode>
 );
 
