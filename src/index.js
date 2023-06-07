@@ -4,13 +4,17 @@ import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
 
-import Hooks from "./components/hooks/Hooks";
+// import Hooks from "./components/hooks/Hooks";
+
+import { Cocktailhook } from "./components/Cocktailhook";
+import { Cocktaileven } from "./components/Cocktaileven";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<Hooks />
+		// <Cocktailhook />
+		<Cocktaileven/>
 	// </React.StrictMode>
 );
 
