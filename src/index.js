@@ -14,10 +14,10 @@ import Lenght from "./components/hooks/Lenght";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		{/* <CostumHookDG /> */}
-		{/* <LoadingHook/> */}
+		<CostumHookDG />
+		<LoadingHook/>
 		<MapOdd/>
-		{/* <Lenght/> */}
+		<Lenght/>
 		
 	</React.StrictMode>
 );
