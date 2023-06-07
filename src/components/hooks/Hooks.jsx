@@ -4,7 +4,6 @@ import { useLocalStorage } from "./useLocalStorage"
 import { AnotherCompo } from "./AnotherComponent"
 import MyVideo from "../../mov_bbb.mp4"
 const Hooks = () => {
-    const [number,setNumber] = useState(0)
     const [name,setName] = useState('gel')
 
     const myref= useRef('gela')
