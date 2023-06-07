@@ -1,8 +1,8 @@
-import { useState } from "react"
+// import { useState } from "react"
 
-export const useBoolean = () => {
-    const [boolean,setBoolean] = useState(false)
+// export const useBoolean = () => {
+//     const [boolean,setBoolean] = useState(false)
     
-    return {boolean, setBoolean}
+//     return {boolean, setBoolean}
 
-}
+// }

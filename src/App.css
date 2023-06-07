@@ -40,3 +40,58 @@
 .App-link {
 	color: #61dafb;
 }
+
+/* custom-hooks styles */
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #3f4652;
+}
+
+.loading-box {
+	border-radius: 12px;
+	border: 4px dashed darkgray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 360px;
+}
+
+#loading-text {
+	font-size: 36px;
+}
+
+.data-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 24px;
+	color: white;
+}
+
+.quantity-box {
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 0;
+	font-size: 28px;
+}
+
+#show-button {
+	width: 180px;
+	height: 50px;
+	border: none;
+	background-color: rgb(27, 27, 27);
+	color: rgb(235, 235, 235);
+	font-weight: 400;
+	font-size: 24px;
+	border-radius: 8px;
+	margin-top: 5px;
+	cursor: pointer;
+}
