@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Hook from "./hook";
+import Cocktails from "./Hook";
 import reportWebVitals from "./reportWebVitals";
+import "./hookcss.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <Hook />
+  <Cocktails />
   // </React.StrictMode>
 );
 
