@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { CocktailContainer } from "../cocktails/CocktailContainer";
+import { useFetchdata } from "../../api/cocktails";
+
 
 
 const fetchURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
@@ -12,6 +14,13 @@ const LiveSearch = () => {
 		isError: false,
 		data: [],
 	});
+
+	
+
+		const coctailsdata =  useFetchdata(fetchURL, search)
+		console.log(coctailsdata, "dd")
+
+
 	const handleSearch = async (e) => {
 		const { value } = e.target;
 
@@ -47,13 +56,15 @@ const LiveSearch = () => {
 	return (
 		<div>
 			live searh
+
 			<form>
 				<input value={search} onChange={handleSearch} />
 			</form>
 			{drinks.isLoaded && drinks.data.length === 0 && <h1>No results</h1>}
 			{drinks.isLoading && <div>loading...</div>}
 			<div className="cocktails-container">
-				{drinks.data.map((cocktail) => (
+				{coctailsdata?.drinks?.map((cocktail) => (
+					
 					<CocktailContainer
 						onDelete={() => {}}
 						cocktail={cocktail}
