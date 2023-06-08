@@ -1,50 +1,45 @@
-import logo from "./logo.svg";
+import { useReducer } from "react";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
 
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
+const initialState = {
+	number: 0
 };
 
+const reducer = (state, action) => {
+	switch(action.type){
+		case 'plusNumber':
+			let addedNum = state.number+1; 
+			let newObjPl = {...state, number: addedNum}
+			return {...newObjPl};
+		case 'minusNumber':
+			if(state.number >= 1) {
+				let minusNum = state.number-1;
+				let newObjMin = {...state, number: minusNum}
+				return {...newObjMin};
+			}	return state;		
+		default:
+			return state;
+	}
+}
+
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+	const [state, dispatch] = useReducer(reducer, initialState)	
+	
+	const handleAddNumber = () => {
+		dispatch({type: 'plusNumber'})
+	}
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
-
-	const onClick = () => {
-		setName(Math.random());
-	};
-
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
+	const handleMinusNumber = () => {
+		dispatch({type: 'minusNumber'})
 	}
 
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+		<div className="main_cont">
+			<button onClick={handleAddNumber}>plus 1</button>
+			<button onClick={handleMinusNumber}>minus 1</button>
+			<h1>{state.number}</h1>
+		</div>
 	);
 };
 
 export default App;
-
-// comment for git to commint
