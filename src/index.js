@@ -4,14 +4,16 @@ import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
 
-import Hooks from "./components/hooks/Hooks";
-
+// import Hooks from "./components/hooks/Hooks";
+import CocktailDisplay from "./components/evenOddCoctails/cocktailDisplay";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-		<Hooks />
-	// </React.StrictMode>
+  // <React.StrictMode>
+  // <Hooks />
+
+  <CocktailDisplay />
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
