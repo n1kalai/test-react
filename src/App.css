@@ -2,19 +2,23 @@
 	display: flex;
 	gap: 20px;
 }
+
 .languages {
 	border: solid 1px lightgray;
 	box-shadow: 0 0 10px gray;
 }
+
 .languages p {
 	background-color: red;
 	text-align: center;
 }
+
 .App img {
 	height: 200px;
 	aspect-ratio: 4/4;
 	pointer-events: none;
 }
+
 .number {
 	font-size: 40px;
 	text-align: center;
@@ -39,4 +43,46 @@
 
 .App-link {
 	color: #61dafb;
+}
+
+/* counter-useReducer */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	height: 100vh;
+	background-color: #a7a7a7;
+}
+
+h1 {
+	font-size: 50px;
+	display: flex;
+	justify-content: center;
+	color: #ecf3cf;
+	text-shadow: 0 -1px 10px #000000, 0 -2px 30px #ff0, 0 -10px 40px #ff8000, 0 -8px 20px rgb(204, 0, 255);
+}
+
+#minus-btn,
+#plus-btn {
+	border: none;
+	width: 90px;
+	height: 30px;
+	color: rgb(214, 214, 214);
+	border-radius: 24px;
+	font-size: 18px;
+	background-color: #282c34;
+	box-shadow: 2px 1px 2px #282c34;
+}
+
+#minus-btn:hover,
+#plus-btn:hover {
+	border: none;
+	width: 90px;
+	height: 30px;
+	color: rgb(214, 214, 214);
+	border-radius: 24px;
+	font-size: 18px;
+	background-color: #224ea7;
+	cursor: pointer;
 }

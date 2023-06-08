@@ -1,16 +1,16 @@
+// useReducer counter  /  hw-1
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-
 import reportWebVitals from "./reportWebVitals";
-
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-
+// import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
+import { ReducerCounter } from "./components/hooks/ReducerCounterTask";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+		<ReducerCounter />
 	// </React.StrictMode>
 );
 
