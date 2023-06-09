@@ -6,11 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 
 import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
 
+import {Todoreducer} from "./components/todoreducer/Todoreducer"
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+		// <ExplainReduserHook />
+		<Todoreducer/>
 	// </React.StrictMode>
 );
 

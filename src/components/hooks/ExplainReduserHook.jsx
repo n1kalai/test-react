@@ -59,8 +59,8 @@ const personReducer = (state,action) => {
             clearInterval(state.intervalId)
             return state
              
-        default:
-            return state
+        // default:
+        //     return state
     }
     
     // if(action.type === 'changeName'){
