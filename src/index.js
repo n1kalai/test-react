@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./components/Todo/Todo";
 import reportWebVitals from "./reportWebVitals";
+import TodoList from "./components/todoListWithUseReducer/TodoLIst";
 
-import AppWithClass from "./AppWithClass";
-import LiveSearch from "./LiveSearch";
-import Quiz from "./components/quiz/Quiz";
+// import Counter from "./components/useReducer/Counter"
+
+
+
 
 
 
@@ -14,8 +15,9 @@ import Quiz from "./components/quiz/Quiz";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<Quiz />
-	// </React.StrictMode>
+		// <Counter />
+		<TodoList />
+	//  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
