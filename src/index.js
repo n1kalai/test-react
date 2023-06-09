@@ -5,12 +5,14 @@ import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 
 import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-
+import LearningContext from "./components/context/LearningContext";
+import UseReducerHW from "./components/hooks/UseReducerHW";
+import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+	<UseReducerPlay />
 	// </React.StrictMode>
 );
 
