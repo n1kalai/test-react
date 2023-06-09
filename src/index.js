@@ -5,12 +5,14 @@ import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 
 import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
+import { Mtvleli } from "./components/mtvleli/Mtvleli";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+		// <ExplainReduserHook />
+		<Mtvleli/>
 	// </React.StrictMode>
 );
 
