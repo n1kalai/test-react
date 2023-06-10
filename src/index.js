@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-
 import reportWebVitals from "./reportWebVitals";
-
 import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
+import Reducer from "./reducer";
+import App from "./reducer";
+import AppInput from "./components/hooks/App";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+		<AppInput />
 	// </React.StrictMode>
 );
 

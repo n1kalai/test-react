@@ -129,7 +129,6 @@ const handleStopChangeBackground = () => {
 }
 
 
-
     return (
         <div>
             <h1>{state.name}(name) - {state.age}(age) - {state.address.toString()}(address)</h1>
