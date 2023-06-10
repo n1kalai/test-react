@@ -58,10 +58,7 @@ const personReducer = (state,action) => {
         case 'stopBackground':
             clearInterval(state.intervalId)
             return state
-            
-        default:
-            return state
-    }
+
     
     // if(action.type === 'changeName'){
     //     return {
@@ -92,7 +89,6 @@ export const ExplainReduserHook = () => {
     // const [isLoaded, setIsLoaded] = useState(false);
     // const [isError, setIsError] = useState(false);
     // const [data, setData] = useState([]);
-    
 
 const handleNameChange = () => {
     dispatch({type : 'changeName', payload: 'nika'})
@@ -116,9 +112,6 @@ const handleDeleteAddress = () => {
 const handleRemoveOrAddCity = () => {
     const payload = citiesArray[Math.floor(Math.random() * citiesArray.length)]
     dispatch({type: 'addOrRemoveCity', payload })
-   
-    console.log(payload)
-}
 
 const handleChangeBackground = () => {
 
@@ -128,7 +121,7 @@ const handleStopChangeBackground = () => {
 
     dispatch({type: 'stopBackground'})
 }
-
+}
 
 
     return (
@@ -143,5 +136,4 @@ const handleStopChangeBackground = () => {
             <button onClick={handleChangeBackground}>changee background</button>
             <button onClick={handleStopChangeBackground}>stop background</button>
         </div>
-    );
-}
+    )

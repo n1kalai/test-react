@@ -1,3 +1,4 @@
+
 // import { useCallback, useMemo, useRef, useState } from "react"
 // import { useFetchCocktails } from "./useFetchCocktails"
 // import { useLocalStorage } from "./useLocalStorage"
@@ -5,6 +6,10 @@
 // import MyVideo from "../../mov_bbb.mp4"
 // const Hooks = () => {
 //     const [name,setName] = useState('gel')
+
+
+    // const [name,setName] = useState('gel')
+
 
 //     const myref= useRef('gela')
 //     const anotherRef = useRef(null)
