@@ -3,15 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
+// import ComponentA from "./components/useContextNJ/componentA.jsx";
+import ComponentB from "./components/useContextNJ/componentB.jsx";
+// import ComponentB from "./components/useContextNJ/componentB";
 
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-
+// import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-		<ExplainReduserHook />
-	// </React.StrictMode>
+  // <React.StrictMode>
+  // <ExplainReduserHook />
+  <ComponentB />
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
