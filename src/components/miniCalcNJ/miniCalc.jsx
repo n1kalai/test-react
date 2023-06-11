@@ -2,9 +2,9 @@ import React, { useReducer } from "react";
 
 const counterReducer = (state, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case "inc":
       return state + 1;
-    case "DECREMENT":
+    case "dec":
       return state - 1;
     default:
       return state;
@@ -16,11 +16,11 @@ const Counter = () => {
   const [count, dispatch] = useReducer(counterReducer, initialState);
 
   const increment = () => {
-    dispatch({ type: "INCREMENT" });
+    dispatch({ type: "inc" });
   };
 
   const decrement = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch({ type: "dec" });
   };
 
   return (
