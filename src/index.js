@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
-import AppWithClass from "./AppWithClass";
+
+// import Hooks from "./components/hooks/Hooks";
+import Counter from "./components/miniCalcNJ/miniCalc";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-	<AppWithClass />
-	// </React.StrictMode>
+  // <React.StrictMode>
+  <Counter />
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
