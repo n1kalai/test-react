@@ -2,19 +2,23 @@
 	display: flex;
 	gap: 20px;
 }
+
 .languages {
 	border: solid 1px lightgray;
 	box-shadow: 0 0 10px gray;
 }
+
 .languages p {
 	background-color: red;
 	text-align: center;
 }
+
 .App img {
 	height: 200px;
 	aspect-ratio: 4/4;
 	pointer-events: none;
 }
+
 .number {
 	font-size: 40px;
 	text-align: center;
@@ -39,4 +43,25 @@
 
 .App-link {
 	color: #61dafb;
+}
+
+/* context */
+button {
+	border: 0;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	box-shadow: 1px 1px 1px 1px;
+	cursor: pointer;
+	color: #282c34;
+	display: block;
+	border-radius: 5px;
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+h2 {
+	display: inline;
+	font-size: 20px;
+	text-shadow: #7a7a7a 1px 1px 1px;
 }
