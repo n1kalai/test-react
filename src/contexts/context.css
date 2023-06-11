@@ -1,0 +1,19 @@
+.main-div {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.h1 {
+  font-size: 40px;
+  color: #415cdc;
+}
+.btn {
+  height: 40px;
+  color: #f108a4;
+  background-color: black;
+  border-radius: 10px;
+  border-style: double;
+}
