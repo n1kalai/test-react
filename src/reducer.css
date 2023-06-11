@@ -1,0 +1,48 @@
+.reactdiv {
+  display: flex;
+  justify-content: center;
+}
+.main-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.input {
+  padding: 20px;
+  width: 700px;
+  height: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid gray;
+  margin-top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 1%;
+}
+.button {
+  width: 60px;
+  height: 40px;
+  background: black;
+  color: white;
+  border-radius: 7px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.li {
+  cursor: pointer;
+  font-size: 20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 20px;
+  width: 700px;
+  height: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: 2%;
+}
