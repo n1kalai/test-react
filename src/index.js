@@ -4,14 +4,14 @@ import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
 
-import Hooks from "./components/hooks/Hooks";
-
+// import Hooks from "./components/hooks/Hooks";
+import Counter from "./components/miniCalcNJ/miniCalc";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-		<Hooks />
-	// </React.StrictMode>
+  // <React.StrictMode>
+  <Counter />
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
