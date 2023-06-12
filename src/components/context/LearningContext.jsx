@@ -1,7 +1,12 @@
-const LearningContext = () => {
-    return (
-        <div>context</div>
-    )
-}
+import ComponentA from "./ComponentA";
 
-export default LearningContext
+const LearningContext = () => {
+	return (
+		<div>
+			context
+			<ComponentA />
+		</div>
+	);
+};
+
+export default LearningContext;
