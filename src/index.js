@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-import App from "./components/hooks/TodoReduc";
+import ContextA from "./components/hooks/ContextA";
 
 
 
@@ -20,8 +20,8 @@ root.render(
 
 	<React.StrictMode>
 
+		<ContextA/>
 		
-		<App/>
 	</React.StrictMode>
 
 
