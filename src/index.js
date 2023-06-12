@@ -1,16 +1,20 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom/client"
 import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
+import Login from "./components/contextLogin/Login";
 
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
+
+
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+		<Login />
 	// </React.StrictMode>
 );
 
