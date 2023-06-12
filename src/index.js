@@ -4,13 +4,14 @@ import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
 
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
+
+import TodoRducer from "./components/TodoWithReducer/TodoRducer";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ExplainReduserHook />
+		<TodoRducer />
 	// </React.StrictMode>
 );
 
