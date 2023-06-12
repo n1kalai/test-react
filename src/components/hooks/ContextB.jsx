@@ -7,7 +7,7 @@ case 'signout':
     return { isAuthenticated : false, name:" "}
 
 case "signin" : 
-return  { isAuthenticated : true, name:'dato gogotishvili'}
+return  { isAuthenticated : true, name:'dato gogotishvilii'}
 
 default :
 return state
