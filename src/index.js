@@ -1,19 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
-
+import "./App.css";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import PostsPage from "./pages/PostsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-import LearningContext from "./components/context/LearningContext";
-import UseReducerHW from "./components/hooks/UseReducerHW";
-import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-	<LearningContext />
-	// </React.StrictMode>
+	<React.StrictMode>
+		<Router>
+			<Routes>
+				<Route path="/" element={<MainPage />} />
+				<Route path="/post/:id" element={<PostsPage />} />
+				<Route path="*" element={<NotFoundPage />} />
+			</Routes>
+		</Router>
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

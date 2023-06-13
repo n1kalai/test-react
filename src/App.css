@@ -38,5 +38,41 @@
 }
 
 .App-link {
-	color: #61dafb;
+	color: #dbe6c2;
+}
+
+/* routing-hw styles */
+.article-container {
+	border: 2px solid rgb(255, 218, 150);
+}
+
+.post-title {
+	font-size: 20px;
+	background-color: #d9ff31;
+}
+
+.post-body {
+	font-size: 20px;
+	background-color: aquamarine;
+}
+
+h2 {
+	background-color: rgb(211, 236, 153);
+	font-style: italic;
+}
+
+.comment-mail {
+	background-color: #bcc0c9;
+}
+
+.comment-body {
+	background-color: #c8d6f3;
+}
+
+.loading {
+	font-size: 75px;
+}
+
+#view-post-btn {
+	font-size: 18px;
 }
