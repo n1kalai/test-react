@@ -2,13 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-import ContextA from "./components/hooks/ContextA";
-
-
-
-
-
-
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { MainPage } from "./components/hooks/MainPage";
+import { PostPage } from "./components/hooks/PostPage";
 
 
 
@@ -17,14 +13,15 @@ import ContextA from "./components/hooks/ContextA";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+<BrowserRouter>
+<Routes>
+	<Route path="/" element={<MainPage/>} />
+	<Route path="/:id" element={<PostPage/>} />
 
-	<React.StrictMode>
+	
+</Routes>
 
-		<ContextA/>
-		
-	</React.StrictMode>
-
-
+</BrowserRouter>
 
 	
 );
