@@ -1,16 +1,34 @@
 
 
-const CocktailContainer = ({ cocktail, title, onDelete }) => {
-	const { strDrink, strDrinkThumb, strInstructions, idDrink } = cocktail;
-  
+const CocktailContainer = ({ cocktails, handleDelete, showEven, showOdd, showOriginal }) => {
 	return (
-	  <article className="cocktail-container">
-		<h2>{strDrink}</h2>
-		<img src={strDrinkThumb} alt={title} />
-		<p>{strInstructions}</p>
-		<button onClick={() => onDelete(idDrink)}>Delete me</button>
-	  </article>
+	  <main className="cont">
+		<h1>
+  {cocktails.data.length === 1
+    ? "1 Cocktail found"
+    : `${cocktails.data.length} Cocktails found`}
+</h1>
+		<div>
+		  {cocktails.data.map(({ idDrink, strDrink, strDrinkThumb, strInstructions }) => (
+			<article key={idDrink}>
+			  <img src={strDrinkThumb} alt={strDrink} />
+			  <h2>{strDrink}</h2>
+			  <p>{strInstructions}</p>
+			  <button onClick={() => handleDelete(idDrink)}> X </button>
+			</article>
+		  ))}
+		</div>
+  
+		<div className="btn-wrp">
+		  <button onClick={showOdd}>Odd-ID</button>
+		  <button onClick={showEven}>Even-ID</button>
+		  <button onClick={showOriginal}>Original</button>
+		</div>
+	  </main>
 	);
   };
+  
+
+  
   
   export default CocktailContainer;
