@@ -8,11 +8,20 @@ import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
 import LearningContext from "./components/context/LearningContext";
 import UseReducerHW from "./components/hooks/UseReducerHW";
 import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
+import { Home } from "./pages/Home";
+import {BrowserRouter as Router,Routes,Route, BrowserRouter} from "react-router-dom"
+import { Posts } from "./pages/Posts";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<LearningContext />
+		<Router>
+		<Routes>
+			<Route  path="/" element={<Home/>}/>
+			<Route path="/post/:id" element = {<Posts/>}/>
+		</Routes>
+		</Router>
+	
 	// </React.StrictMode>
 );
 
