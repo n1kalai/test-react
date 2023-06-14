@@ -3,18 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-import Reducer from "./reducer";
+import LearningContext from "./components/context/LearningContext";
+import UseReducerHW from "./components/hooks/UseReducerHW";
+import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";import Reducer from "./reducer";
 import App from "./reducer";
 import AppInput from "./components/hooks/App";
 import ComponentsFirst from "./components/hooks/ComponentFirst";
 
 
-
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<ComponentsFirst />
+	<LearningContext />
 	// </React.StrictMode>
 );
 
