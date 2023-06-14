@@ -4,7 +4,7 @@ const LearningContext = () => {
 	return (
 		<div>
 			context
-			<ComponentA />
+			<ComponentA componentAProps="parentparentprops" />
 		</div>
 	);
 };

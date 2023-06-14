@@ -1,22 +1,25 @@
 import { useContext } from "react";
 import { ColorContext } from "./ComponentA";
+import { useNavigate } from "react-router-dom";
 
-const ComponentD = () => {
-	const Mycontext = useContext(ColorContext);
-	console.log(Mycontext);
-	const handleChangeColor = () => {
-		Mycontext.setColor("blue");
+const ComponentD = ({ company, userId }) => {
+	const { setUsers, componentAProps } = useContext(ColorContext);
+	const push = useNavigate();
+
+	const handleNavigate = () => {
+		push(`/${userId}`);
 	};
+
 	return (
-		<div>
-			ComponentD{" "}
-			<button
-				onClick={handleChangeColor}
-				style={{ color: Mycontext.contextColor }}
-			>
-				change color
-			</button>
-		</div>
+		<>
+			<p style={{ color: "green", borderBottom: "solid 1px silver" }}>
+				{company.name}
+				<br />
+				{componentAProps}
+			</p>
+			<button onClick={handleNavigate}> View details</button>
+			<button onClick={() => push(1)}> go forward</button>
+		</>
 	);
 };
 
