@@ -6,12 +6,15 @@ import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
 import Reducer from "./reducer";
 import App from "./reducer";
 import AppInput from "./components/hooks/App";
+import ComponentsFirst from "./components/hooks/ComponentFirst";
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<AppInput />
+		<ComponentsFirst />
 	// </React.StrictMode>
 );
 
