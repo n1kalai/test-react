@@ -1,21 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { MainPage } from "./components/MainPage";
 import { PostDetails } from "./components/PostDetails";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { About } from "./components/About";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
 	<BrowserRouter>
+		<Header />
 		<Routes>
 			<Route path="/" element={<MainPage />} />
 			<Route path="/:id" element={<PostDetails />} />
+			<Route path="/about" element={<About />} />
 			<Route path="*" element={<div>Not Found</div>} />
 		</Routes>
-			
+		<Footer />
 	</BrowserRouter>
 	// </React.StrictMode>
 );
