@@ -8,12 +8,15 @@ export const About = () => {
         display: flex;
         justify-content: space-between;
         height: 600px;
-        background-color: white;
+        background-color: #fdfbed;
         margin-left: auto;
         margin-right: auto;
-        border: solid 1px black;
+        border: solid 1px #fefdc8;
+        border-radius: 10px;
         gap: 15px;
         position: relative;
+        padding-top: 20px;
+        box-shadow: 0 0 30px #9e8a69;
         & img {
             width: 500px;
             height: 550px;
