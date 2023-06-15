@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
-import App from "./components/Todo/Todo";
 import reportWebVitals from "./reportWebVitals";
+import "../src/App.css"
+import { MainPage } from "./styledComponents/MainPage";
+import { PostsPage} from "./styledComponents/PostsPage"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { About } from "./styledComponents/About";
+import { Header } from "./styledComponents/Header"
+import { Footer } from "./styledComponents/Footer";
 
-import AppWithClass from "./AppWithClass";
-import LiveSearch from "./LiveSearch";
-import Quiz from "./components/quiz/Quiz";
+
 
 
 
@@ -14,7 +17,17 @@ import Quiz from "./components/quiz/Quiz";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-		<Quiz />
+		
+	<BrowserRouter>	
+	<Header />
+		<Routes>
+			<Route path="/" element={<MainPage />} />
+			<Route path="/post/:id" element={<PostsPage />} />
+			<Route path="/about" element={<About />} />
+			<Route path="*" element={<div>not found</div>} />
+    	</Routes>
+		<Footer />
+	</BrowserRouter>
 	// </React.StrictMode>
 );
 
