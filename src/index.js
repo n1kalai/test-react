@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import "./index.scss";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -10,21 +11,23 @@ import reportWebVitals from "./reportWebVitals";
 // import UseReducerHW from "./components/hooks/UseReducerHW";
 // import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
 
-import Post from "./components/reactRouterHW/posts.jsx";
-import MainPostsPage from "./components/reactRouterHW/mainPage.jsx";
+import Post from "./components/reactRouterHW/posts";
+import MainPostsPage from "./components/reactRouterHW/mainPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   //   <React.StrictMode>
 
-  <Post />
+  // <MainPostsPage />
 
-  // <BrowserRouter>
-  //   <Routes>
-  //     <Route exact path="/" element={<MainPostsPage />} />
-  //     {/* <Route exact path="posts/" element={<Post />} /> */}
-  //   </Routes>
-  // </BrowserRouter>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<MainPostsPage />} />
+      <Route path="/:id" element={<Post />} />
+      <Route path="*" element={<div>Not Found</div>} />
+    </Routes>
+  </BrowserRouter>
+
   //    </React.StrictMode>
 );
 

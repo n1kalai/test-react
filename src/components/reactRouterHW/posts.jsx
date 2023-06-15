@@ -1,33 +1,72 @@
-// import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-// const Post = () => {
-//   return <div>Posts</div>;
-// };
+const Post = () => {
+  const [post, setPost] = useState({});
+  const [comments, setComments] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-// export default Post;
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
-import React from "react";
-import styled from "styled-components";
+  const fetchPostAndComments = async () => {
+    try {
+      const [postResponse, commentsResponse] = await Promise.all([
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`),
+        fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`),
+      ]);
 
-const Button = styled.button`
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+      const postData = await postResponse.json();
+      const commentsData = await commentsResponse.json();
 
-  &:hover {
-    background-color: #0056b3;
+      setPost(postData);
+      setComments(commentsData);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
+    }
+  };
+
+  useEffect(() => {
+    fetchPostAndComments();
+  }, []);
+
+  const handleNavigateBack = () => {
+    navigate(-1);
+  };
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
-`;
 
-const App = () => {
+  if (isError) {
+    return <h1>Error...</h1>;
+  }
+
   return (
-    <div>
-      <Button>Click me</Button>
+    <div className="post-section">
+      <h1>{post?.title}</h1>
+      <p>{post?.body}</p>
+
+      {comments.length > 0 ? (
+        <div className="comment-section">
+          <h2>Comments</h2>
+          {comments.map((comment) => (
+            <div key={comment.id}>
+              <h3>{comment.email}</h3>
+              <p>{comment.body}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No comments.</p>
+      )}
+
+      <button onClick={handleNavigateBack}>Back</button>
     </div>
   );
 };
 
-export default App;
+export default Post;
