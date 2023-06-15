@@ -5,6 +5,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { MainPage } from "./components/hooks/MainPage";
 import { PostPage } from "./components/hooks/PostPage";
+import { AboutPage } from "./components/hooks/AboutPage";
+import { Header } from "./components/hooks/Header";
+import { Footer } from "./components/hooks/Footer";
 
 
 
@@ -14,12 +17,15 @@ import { PostPage } from "./components/hooks/PostPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 <BrowserRouter>
+<Header/>
 <Routes>
 	<Route path="/" element={<MainPage/>} />
 	<Route path="/:id" element={<PostPage/>} />
+	<Route path="/about" element={<AboutPage/>}/>
 
 	
 </Routes>
+<Footer/>
 
 </BrowserRouter>
 

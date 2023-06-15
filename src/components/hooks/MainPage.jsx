@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { Header } from "./Header"
 
 
 export const MainPage = () => { 
@@ -43,9 +44,7 @@ const handleNavigate = (id) => {
 }
 
 return (
-    
 <section>
-
 {post.data.map((ele)=>(
     <div key={ele.id}>
         <h1>{ele.title}</h1>
@@ -54,6 +53,7 @@ return (
     </div>
 ))}
 </section>
+
 )
 
 
