@@ -1,13 +1,51 @@
-.cocktails-container {
+body {
+	background: linear-gradient(to right, #AED8E6, #C9E4F0);
 	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	.cocktail-container {
-		display: flex;
-		flex-direction: column;
-		width: 360px;
-		& img {
-			width: 360px;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+  
+	.wrp {
+	  border-radius: 30px;
+	  box-shadow: 5px 5px 30px black;
+	  background: radial-gradient(circle, #B3E6C1, #6FC592);
+	  width: 25rem;
+	  height: 20rem;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+  
+	  button {
+		width: 7rem;
+		height: 2.3rem;
+		background-color: #478E59;
+		border-radius: 15px;
+		border: none;
+		cursor: pointer;
+		text-shadow: 2px 2px 20px;
+		color: whitesmoke;
+		font-weight: bold;
+		box-shadow: 0 0 20px;
+		&:hover {
+		  box-shadow: 0 0 50px bisque;
 		}
+	  }
+  
+	  h1 {
+		color: steelblue;
+		text-shadow: 0 0 30px;
+	  }
+  
+	  input {
+		width: 15rem;
+		height: 2rem;
+		border-radius: 15px;
+		border: none;
+		margin-bottom: 1rem;
+		padding: 0.5rem;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	  }
 	}
-}
+  }
+  
