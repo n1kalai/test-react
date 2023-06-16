@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
+import "./App.css";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,12 +12,14 @@ import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserPage } from "./pages/UserPage";
 import { Header } from "./components/Header";
+import { About } from "./pages/About";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<BrowserRouter>
 		<Header />
 		<Routes>
 			<Route path="/" element={<LearningContext />} />
+			<Route path="/about" element={<About />} />
 			<Route path="/:id" element={<UserPage />} />
 			<Route path="*" element={<div>not GELA</div>} />
 		</Routes>

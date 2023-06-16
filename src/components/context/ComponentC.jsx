@@ -1,6 +1,9 @@
 import { Fragment, useContext } from "react";
-import ComponentD from "./ComponentD";
+import ComponentD, { StyledComponentD } from "./ComponentD";
 import { ColorContext } from "./ComponentA";
+import styled from "styled-components";
+
+
 
 const ComponentC = () => {
 	const { users } = useContext(ColorContext);

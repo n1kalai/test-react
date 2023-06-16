@@ -3,11 +3,32 @@
 // 	admin: <AdminHeader />,
 // };
 
+import { Link, NavLink } from "react-router-dom";
+
 export const Header = () => (
 	<nav>
 		<ul>
-			<li>1</li>
-			<li>2</li>
+			<li>
+				<NavLink
+					className={({ isActive, isPending }) =>
+						isActive ? "active" : isPending ? "pending" : ""
+					}
+					to="/"
+				>
+					Home
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					className={({ isActive }) =>
+						isActive ? "active more-classname " : ""
+					}
+					to="/about"
+				>
+					About
+				</NavLink>
+			</li>
+
 			<li>3</li>
 			<li>4</li>
 			<li>5</li>
