@@ -1,5 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { MainPageDiv } from "./mainPage";
+import styled from "styled-components";
+
+const MainCommentDiv = styled.div`
+  background-color: rgba(63, 94, 251, 0.1);
+  padding: 0 20px;
+
+  & h2 {
+    font-size: 34px;
+    font-weight: bold;
+
+    border-bottom: 3px solid red;
+    width: 20%;
+  }
+`;
+
+const CommentDiv = styled.div`
+  border-bottom: 3px solid green;
+
+  & h3 {
+    font-size: 20px;
+    color: rgba(63, 94, 251, 0.8);
+  }
+`;
+
+const Commbutton = styled.button`
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  background-color: green;
+  border: 3px solid white;
+  border-radius: 8px;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: green;
+    border: 3px solid green;
+  }
+`;
 
 const Post = () => {
   const [post, setPost] = useState({});
@@ -46,26 +86,26 @@ const Post = () => {
   }
 
   return (
-    <div className="post-section">
+    <MainPageDiv className="post-section">
       <h1>{post?.title}</h1>
       <p>{post?.body}</p>
 
       {comments.length > 0 ? (
-        <div className="comment-section">
+        <MainCommentDiv className="comment-section">
           <h2>Comments</h2>
           {comments.map((comment) => (
-            <div key={comment.id}>
+            <CommentDiv key={comment.id}>
               <h3>{comment.email}</h3>
               <p>{comment.body}</p>
-            </div>
+            </CommentDiv>
           ))}
-        </div>
+        </MainCommentDiv>
       ) : (
         <p>No comments.</p>
       )}
 
-      <button onClick={handleNavigateBack}>Back</button>
-    </div>
+      <Commbutton onClick={handleNavigateBack}>Back</Commbutton>
+    </MainPageDiv>
   );
 };
 

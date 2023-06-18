@@ -1,6 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import styled from "styled-components";
+
+export const MainPageDiv = styled.div`
+  background-color: rgba(63, 94, 251, 0.1);
+`;
+
+const PostDiv = styled.div`
+  border-bottom: 3px solid green;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 10px 20px;
+
+  & h1 {
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+  }
+
+  & p {
+    padding: 0;
+    margin: 0;
+  }
+
+  & button {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    background-color: green;
+    border: 3px solid white;
+    border-radius: 8px;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: green;
+      border: 3px solid green;
+    }
+  }
+`;
+
 const MainPostsPage = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,17 +81,17 @@ const MainPostsPage = () => {
   };
 
   return (
-    <div>
+    <MainPageDiv>
       {posts.map((post) => {
         return (
-          <div key={post.id}>
+          <PostDiv key={post.id}>
             <h1>{post.title}</h1>
             <p>{post.body}</p>
             <button onClick={() => handleNavigate(post.id)}>More Info</button>
-          </div>
+          </PostDiv>
         );
       })}
-    </div>
+    </MainPageDiv>
   );
 };
 

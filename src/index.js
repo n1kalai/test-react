@@ -13,6 +13,9 @@ import reportWebVitals from "./reportWebVitals";
 
 import Post from "./components/reactRouterHW/posts";
 import MainPostsPage from "./components/reactRouterHW/mainPage";
+import Header from "./components/reactRouterHW/header";
+import { About } from "./components/reactRouterHW/about";
+import { Footer } from "./components/reactRouterHW/footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,11 +24,14 @@ root.render(
   // <MainPostsPage />
 
   <BrowserRouter>
+    <Header />
     <Routes>
       <Route path="/" element={<MainPostsPage />} />
       <Route path="/:id" element={<Post />} />
+      <Route path="/about" element={<About />} />
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>
+    <Footer />
   </BrowserRouter>
 
   //    </React.StrictMode>
