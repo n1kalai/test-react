@@ -1,33 +1,41 @@
-import React from "react";
-import {v4 as uuidv4} from "uuid"
+import React, { useState } from "react";
 
+const Form = ({ input, setInput, todo, setTodo }) => {
+  const [idCounter, setIdCounter] = useState(1); 
 
-const Form  = ({input, setInput, todo, setTodo}) => {
+  const onInputChange = (event) => {
+    setInput(event.target.value);
+  };
 
-    const onInputChange = (event) => {
-        setInput(event.target.value);
-      
-    };
-const onFormSubmit = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
-    if(input.trim() === "") {
-        return;
+    if (input.trim() === "") {
+      return;
     }
-    // setTodo((prevState) => [...prevState, input]);
-    setTodo([...todo, {id:uuidv4(), title:input, completed: false}])
+    const newTodo = {
+      id: idCounter,
+      title: input,
+      completed: false,
+    };
+    setTodo([...todo, newTodo]);
     setInput("");
-}
+    setIdCounter((prevCounter) => prevCounter + 1);
+  };
 
-    return (
+  return (
     <form onSubmit={onFormSubmit}>
-        <input type="text" 
-        placeholder="Enter a Todo..." 
-        className="task-input" 
-        value={input} 
-        onChange={onInputChange}/>
-        <button className="button-add" type="submit">Add</button>
+      <input
+        type="text"
+        placeholder="Enter a Todo..."
+        className="task-input"
+        value={input}
+        onChange={onInputChange}
+      />
+      <button className="button-add" type="submit">
+        Add
+      </button>
     </form>
-    );
+  );
 };
 
-export default Form; 
+export default Form;
