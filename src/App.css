@@ -40,3 +40,19 @@
 .App-link {
 	color: #61dafb;
 }
+a {
+	text-decoration: none;
+	color: red;
+}
+.active {
+	color: green;
+	border-bottom: solid 2px green;
+}
+
+@media (prefers-color-scheme: dark) {
+	.theme-a.adaptive {
+		background: #753;
+		color: #dcb;
+		outline: 5px dashed #000;
+	}
+}
