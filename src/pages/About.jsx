@@ -30,7 +30,9 @@ export const About = () => {
 		<div ref={myref}>
 			about page
 			<button onClick={handleMode}>set dark mode</button>
-			<Link to="/">home page</Link>
+			<Link to="/" replace>
+				home page
+			</Link>
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CocktailContainer } from "../cocktails/CocktailContainer";
-
+import axios from "axios";
 
 const fetchURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
@@ -32,10 +32,9 @@ const LiveSearch = () => {
 			isError: false,
 			data: [],
 		});
-		const response = await fetch(fetchURL + value);
+		const response = await axios.get(fetchURL + value);
 
-		const data = await response.json();
-		const { drinks } = data;
+		const { drinks } = response.data;
 		setDrinks({
 			isLoading: false,
 			isLoaded: true,

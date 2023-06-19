@@ -4,37 +4,74 @@
 // };
 
 import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
 
-export const Header = () => (
-	<nav>
-		<ul>
-			<li>
-				<NavLink
-					className={({ isActive, isPending }) =>
-						isActive ? "active" : isPending ? "pending" : ""
-					}
-					to="/"
-				>
-					Home
-				</NavLink>
-			</li>
-			<li>
-				<NavLink
-					className={({ isActive }) =>
-						isActive ? "active more-classname " : ""
-					}
-					to="/about"
-				>
-					About
-				</NavLink>
-			</li>
+const StyledHeader = styled.header`
+	display: flex;
+	justify-content: space-between;
+`;
 
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-		</ul>
-	</nav>
-);
+export const Header = ({ user, setUser, setShowLoginModal }) => {
+	const handleShowSignIn = () => {
+		setShowLoginModal(true);
+	};
+
+	const handleLogOut = () => {
+		localStorage.removeItem("user");
+		setUser({ isSignedIn: false, name: "" });
+	};
+
+	return (
+		<StyledHeader>
+			<nav>
+				<ul>
+					<li>
+						<NavLink
+							className={({ isActive, isPending }) =>
+								isActive ? "active" : isPending ? "pending" : ""
+							}
+							to="/"
+						>
+							Home
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? "active more-classname " : ""
+							}
+							to="/about"
+						>
+							About
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? "active more-classname " : ""
+							}
+							to="/cocktails"
+						>
+							cocktails
+						</NavLink>
+					</li>
+
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+			</nav>
+			{user.isSignedIn ? (
+				<div>
+					welcome: {user.name}
+					<button onClick={handleLogOut}>sign out</button>
+				</div>
+			) : (
+				<button onClick={handleShowSignIn}>sign in</button>
+			)}
+		</StyledHeader>
+	);
+};
 // role = "admin"
 // AdminHeaders[role]
 
