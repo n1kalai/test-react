@@ -1,28 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import { MainPage } from "./components/MainPage";
-import { PostDetails } from "./components/PostDetails";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import { About } from "./components/About";
 import "./index.css";
+import ToDoList from "./ToDoList";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<BrowserRouter>
-		<Header />
-		<Routes>
-			<Route path="/" element={<MainPage />} />
-			<Route path="/:id" element={<PostDetails />} />
-			<Route path="/about" element={<About />} />
-			<Route path="*" element={<div>Not Found</div>} />
-		</Routes>
-		<Footer />
-	</BrowserRouter>
+	<Provider store={store}>
+		<ToDoList />
+	</Provider>
 	// </React.StrictMode>
 );
 

@@ -1,70 +1,83 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    background-color: #fdfaeb;
+body { 
+    background-color: #f4f6fc;
 }
 
-.container {
+.todo_cont {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    gap: 20px;
+    width: 600px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.post-text {
-    text-decoration: underline;
+h1 {
+    width: 500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 15px;
 }
 
-.post-section {
-    padding: 10px;
-    width: 400px;
-    height: auto;
-    background-color: lightgray;
-    box-shadow: 0 0 10px gray;
-    margin: 80px auto;
-}
-
-.div-button {
-    width: 100px;
+input {
     height: 40px;
+    width: 350px;
+    box-sizing: border-box;
+    padding: 1px;
     border-radius: 5px;
-    margin-top: 20px;
-    margin-left: 130px;
-    box-shadow: 0 0 10px gray;
+    border: 3px solid #ccc;
 }
 
-.div-button:hover {
+
+input[type=text]:focus {
+    border: 3px solid #59aedb;
+  }
+
+.add_button {
+    color: white;
+    background-color: rgb(64, 56, 56);
+    width: 90px;
+    height: 35px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+}
+
+.add_button:hover {
     cursor: pointer;
 }
 
-.comment-section {
-    padding-top: 15px;
-    text-decoration: underline;
+ul {
+    margin-top: 20px;
+    list-style: none;
 }
 
-h2 {
-    font-size: 15px;
-    color: rgb(71, 179, 237);
+ul li {
+    width: 350px;
 }
 
-.loading {
+.del_button {
+    background-color: rgb(64, 56, 56);
+    color: white;
+    height: 35px;
+    width: 80%;
+    margin-bottom: 5px;
+    border: none;
+    box-shadow: 0 0 5px lightgray;
     text-align: center;
-    padding-top: 100px;
-    font-weight: 600;
+    border-radius: 5px;
+    font-size: 17px;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-}
-
-.active {
-    color: red;
-    border-bottom: solid 1px rgb(252, 65, 65);
+.del_button:hover {
+    cursor: pointer;
 }
