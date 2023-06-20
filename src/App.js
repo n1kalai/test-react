@@ -1,48 +1,34 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import { useEffect } from "react";
+import CocktailContainer from "./components/cocktails/CocktailContainer";
+import { Header } from "./components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCocktails } from "./features/cocktailsFetch/cocktailSlice";
+import { increment } from "./features/cartCounter/cartCountSlice";
 
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
+	const dispatch = useDispatch();
+	const cocktails = useSelector((state) => state.cocktails);
+
 	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
-
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
-
-	const onClick = () => {
-		setName(Math.random());
-	};
-
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
+		dispatch(fetchCocktails());
+	  }, [dispatch]);
 
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+		<>
+		<Header />
+		
+		<section className="cocktails-container">
+			{cocktails.map((cocktail) => (
+				<CocktailContainer
+					addToCart={increment}
+					key={cocktail.idDrink}
+					cocktail={cocktail}
+				/>
+			))}
+		</section>
+		</>
 	);
 };
-
 export default App;
