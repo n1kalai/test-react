@@ -56,7 +56,17 @@ export const Header = ({ user, setUser, setShowLoginModal }) => {
 						</NavLink>
 					</li>
 
-					<li>3</li>
+					<li>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? "active more-classname " : ""
+							}
+							to="/redux"
+						>
+							redux
+						</NavLink>
+					</li>
+
 					<li>4</li>
 					<li>5</li>
 				</ul>

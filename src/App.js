@@ -10,6 +10,7 @@ import { LoginModal } from "./components/LoginModal";
 import { fetchCocktails } from "./api/cocktails";
 import LiveSearch from "./components/Livesearch/LiveSearch";
 import axios from "axios";
+import { Reduxplay } from "./pages/Reduxplay";
 
 const staticPassword = "123";
 
@@ -69,6 +70,7 @@ export const App = () => {
 			)}
 			<Routes>
 				<Route path="/" element={<LearningContext />} />
+				<Route path="/redux" element ={<Reduxplay/>}/>
 				<Route element={<ProtectedRoute user={user} />}>
 					<Route path="/:id" element={<UserPage />} />
 					<Route path="/about" element={<About />} />
