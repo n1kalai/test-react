@@ -12,10 +12,11 @@
 
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 const POSTS_DATA_URL = 'https://jsonplaceholder.typicode.com/posts'
 
-const Davaleba39 = () => {
+const Posts = () => {
   const [data, setData] = useState()
 
   useEffect(() => {
@@ -28,15 +29,28 @@ const Davaleba39 = () => {
       .then(res => setData(res))
   }
 
+  const PostsStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+    margin: 20px auto;
+    & article {
+      border-bottom: 1px solid darkblue;
+      padding-bottom: 10px;
+    }
+  `
   return (
-    data?.map((item) => (
-      <article key={item.id}>
-        <h3>{item.title}</h3>
-        <p>{item.body}</p>
-        <Link to={`/post/${item.id}`}>click</Link>
-      </article>
-    ))
+    <PostsStyle>
+      {data?.map((item) => (
+        <article key={item.id}>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+          <Link to={`/post/${item.id}`}>click</Link>
+        </article>
+      ))}
+    </PostsStyle>
   )
 }
 
-export default Davaleba39
+export default Posts
