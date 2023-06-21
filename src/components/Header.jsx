@@ -3,22 +3,29 @@
 // 	admin: <AdminHeader />,
 // };
 
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { setUser } from "../features/user/userReducer";
 
 const StyledHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
 `;
 
-export const Header = ({ user, setUser, setShowLoginModal }) => {
+const getUser = (state) => state.user;
+
+export const Header = ({ setShowLoginModal }) => {
+	const dispatch = useDispatch();
 	const handleShowSignIn = () => {
 		setShowLoginModal(true);
 	};
 
+	const user = useSelector(getUser);
+
 	const handleLogOut = () => {
 		localStorage.removeItem("user");
-		setUser({ isSignedIn: false, name: "" });
+		dispatch(setUser({ isSignedIn: false, name: "" }));
 	};
 
 	return (
@@ -55,8 +62,17 @@ export const Header = ({ user, setUser, setShowLoginModal }) => {
 							cocktails
 						</NavLink>
 					</li>
+					<li>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? "active more-classname " : ""
+							}
+							to="/redux"
+						>
+							redux
+						</NavLink>
+					</li>
 
-					<li>3</li>
 					<li>4</li>
 					<li>5</li>
 				</ul>

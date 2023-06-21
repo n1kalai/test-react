@@ -10,24 +10,22 @@ import { LoginModal } from "./components/LoginModal";
 import { fetchCocktails } from "./api/cocktails";
 import LiveSearch from "./components/Livesearch/LiveSearch";
 import axios from "axios";
+import { ReduxPlay } from "./pages/ReduxPlay";
+import { setUser } from "./features/user/userReducer";
+import { useDispatch } from "react-redux";
 
 const staticPassword = "123";
 
-const userr = {
-	isSignedIn: false,
-	name: "",
-};
-
 export const App = () => {
-	const [user, setUser] = useState(userr);
 	const [logIn, setLogIn] = useState({ name: "", password: "" });
 	const [showLoginModal, setShowLoginModal] = useState(false);
 
+	const dispatch = useDispatch();
 	useEffect(() => {
 		const loggedInUser = localStorage.getItem("user");
 		if (loggedInUser) {
 			const parsedUser = JSON.parse(loggedInUser);
-			setUser(parsedUser);
+			dispatch(setUser(parsedUser));
 		}
 	}, []);
 
@@ -40,14 +38,14 @@ export const App = () => {
 				JSON.stringify({ ...logIn, isSignedIn: true })
 			);
 
-			try {
-				await axios.post("http://gela.com", logIn);
-			} catch (err) {
-				console.log("error", err);
-			}
+			// try {
+			// 	await axios.post("http://gela.com", logIn);
+			// } catch (err) {
+			// 	console.log("error", err);
+			// }
 
 			setShowLoginModal(false);
-			setUser({ isSignedIn: true, name });
+			dispatch(setUser({ isSignedIn: true, name }));
 		} else {
 			alert("incorrect credentials");
 		}
@@ -55,11 +53,7 @@ export const App = () => {
 
 	return (
 		<BrowserRouter>
-			<Header
-				user={user}
-				setUser={setUser}
-				setShowLoginModal={setShowLoginModal}
-			/>
+			<Header setShowLoginModal={setShowLoginModal} />
 			{showLoginModal && (
 				<LoginModal
 					setLogIn={setLogIn}
@@ -69,7 +63,8 @@ export const App = () => {
 			)}
 			<Routes>
 				<Route path="/" element={<LearningContext />} />
-				<Route element={<ProtectedRoute user={user} />}>
+				<Route path="/redux" element={<ReduxPlay />} />
+				<Route element={<ProtectedRoute />}>
 					<Route path="/:id" element={<UserPage />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/cocktails" element={<LiveSearch />} />
