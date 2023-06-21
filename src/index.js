@@ -2,29 +2,28 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import "./App.css";
-
 import reportWebVitals from "./reportWebVitals";
-
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-import LearningContext from "./components/context/LearningContext";
-import UseReducerHW from "./components/hooks/UseReducerHW";
-import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
+// import App from "./features/App";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { UserPage } from "./pages/UserPage";
-import { Header } from "./components/Header";
-import { About } from "./pages/About";
+
+import { Provider } from "react-redux";
+import App from "./component/App";
+import store from "./component/Store";
+
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<BrowserRouter>
-		<Header />
-		<Routes>
-			<Route path="/" element={<LearningContext />} />
-			<Route path="/about" element={<About />} />
-			<Route path="/:id" element={<UserPage />} />
-			<Route path="*" element={<div>not GELA</div>} />
-		</Routes>
-		<Header />
-	</BrowserRouter>
+
+	<Provider store={store}>
+<BrowserRouter>
+		<App/>
+
+</BrowserRouter>
+	</Provider>
+
+
+
 	// <React.StrictMode>
 	// <LearningContext />
 	// </React.StrictMode>
