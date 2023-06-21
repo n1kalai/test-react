@@ -1,33 +1,33 @@
-.cocktails-container {
-	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	.cocktail-container {
-		display: flex;
-		flex-direction: column;
-		width: 360px;
-		& img {
-			width: 360px;
-		}
-	}
-}
+// .cocktails-container {
+// 	display: flex;
+// 	gap: 20px;
+// 	flex-wrap: wrap;
+// 	.cocktail-container {
+// 		display: flex;
+// 		flex-direction: column;
+// 		width: 360px;
+// 		& img {
+// 			width: 360px;
+// 		}
+// 	}
+// }
 
-/* .parent-div .inner-div span {
+// /* .parent-div .inner-div span {
 
-} */
+// } */
 
-.dark {
-	button {
-		background-color: black !important;
-	}
-}
+// .dark {
+// 	button {
+// 		background-color: black !important;
+// 	}
+// }
 
-.parent-div {
-	color: red;
-	& .inner-div {
-		background-color: green;
-		& span {
-			color: green;
-		}
-	}
-}
+// .parent-div {
+// 	color: red;
+// 	& .inner-div {
+// 		background-color: green;
+// 		& span {
+// 			color: green;
+// 		}
+// 	}
+// }
