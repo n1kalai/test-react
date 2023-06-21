@@ -24,18 +24,18 @@ const App = () => {
 	};
 
 	return (
-		<div className="to-do-app">
+		<div >
 			<h1>TODO LIST</h1>
 			<input
-				placeholder="add item..."
+				
 				value={inputValue}
 				onChange={handleInputChange}
 			/>
 
-			<button id="add-button" onClick={handleAddItem}>
+			<button  onClick={handleAddItem}>
 				Add
 			</button>
-			<div className="list-box">
+			<div >
 				<ul>
 					{savedItems.map((todoItem) => (
 						<li key={todoItem.id}>
