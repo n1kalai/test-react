@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import cartLogo from './../images/cart.png'
 import { useDispatch, useSelector } from "react-redux";
+import { showCart } from "../features/cartCounter/cartCountSlice";
 
 export const Header = () => {
 
@@ -40,6 +41,7 @@ export const Header = () => {
     `
 
     const counter = useSelector((state) => state.cartcounter);
+    const dispatch = useDispatch();
     
 
     return (
@@ -54,8 +56,8 @@ export const Header = () => {
                         <a href="/">About</a>
                     </li>
                     <div className="cartDiv">
-                        <img src={cartLogo} alt='cartLogo' />
-                        {counter.visible && (<p>{counter.value}</p>)}
+                        <img onClick={() => dispatch(showCart())} src={cartLogo} alt='cartLogo' />
+                        {counter.visibleNum && (<p>{counter.items.length}</p>)}
                     </div>
                 </StyledUl>
             </nav>

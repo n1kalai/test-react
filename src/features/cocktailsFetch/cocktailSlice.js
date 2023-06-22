@@ -1,25 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
 
-export const fetchCocktails = createAsyncThunk(
-  'cocktails/fetchCocktails',
-  async () => {
-    const response = await axios.get(
-      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
-    );
-    return response.data.drinks;
-  }
-);
+const initialState = {
+  isLoading: true,
+  isError: false,
+  data: [],
+}
 
-const cocktailSlice = createSlice({
+export const cocktailSlice = createSlice({
   name: 'cocktails',
-  initialState: [],
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchCocktails.fulfilled, (state, action) => {
-      return action.payload;
-    });
-  },
-});
+  initialState,
+  reducers: {
+    addItems(state, action){
+      state.isLoading = false;
+      state.isError = false;
+      state.data = action.payload;      
+    }
+  }
+})
 
+export const { addItems } = cocktailSlice.actions;
 export default cocktailSlice.reducer;
