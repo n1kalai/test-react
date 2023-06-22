@@ -1,50 +1,64 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import { useEffect } from "react";
+import CocktailContainer from "./components/cocktails/CocktailContainer";
+import { Header } from "./components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem, deleteCartItem, increment } from "./features/cartCounter/cartCountSlice";
+import { fetchCocktails } from "./api/fetchCocktails";
+import { addItems } from "./features/cocktailsFetch/cocktailSlice";
+import CocktailContainerCart from "./components/cocktails/CocktailContainerCart";
 
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
+
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
+	const dispatch = useDispatch();
+	const {isLoading, isError, data} = useSelector((state) => state.cocktails);
+	const isCartShown = useSelector(state => state.cartcounter.showCartItems);
+	const cartItems = useSelector(state => state.cartcounter.items);
+	
 	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+		fetchCocktails().then(res => dispatch(addItems(res))) 
+	}, [])
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
-
-	const onClick = () => {
-		setName(Math.random());
-	};
-
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
+	const handleAddToCart = (cocktailId) => {
+		dispatch(addCartItem({cocktailId, data}))
+		dispatch(increment());
 	}
 
+	const handleDelete = (cocktailId) => {
+		dispatch(deleteCartItem(cocktailId))
+	}
+	
+	if(isLoading) return <div>Loading ...</div>;
+	if(isError) return <div>Error ...</div>;
+	
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+		<>
+		<Header />
+
+		{isCartShown && <section className="cart-container">
+			{cartItems.map((cocktail) => (
+				<CocktailContainerCart
+					onDelete={handleDelete}
+					key={cocktail.idDrink}
+					cocktail={cocktail}
+					buttonTitle = 'Remove'
+				/>
+			))}
+		</section>}
+		
+		<section className="cocktails-container">
+			{data.map((cocktail) => (
+				<CocktailContainer
+					addToCart={handleAddToCart}
+					key={cocktail.idDrink}
+					cocktail={cocktail}
+					buttonTitle = 'Add to cart'
+				/>
+			))}
+		</section>
+		</>
 	);
 };
-
 export default App;
 
 // comment for git to commint

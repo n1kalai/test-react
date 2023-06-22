@@ -1,21 +1,15 @@
-import { Component } from "react";
+import React from "react";
 
-export class CocktailContainer extends Component {
-	constructor(props) {
-		super(props);
-	}
+const CocktailContainer = ({ cocktail:{strDrink, strDrinkThumb, strInstructions, idDrink}, addToCart, buttonTitle } ) => {
+  
+  return (
+    <article className="cocktail-container">
+      <h2>{strDrink}</h2>
+      <img src={strDrinkThumb} alt={strDrink} />
+      <p>{strInstructions}</p>
+      <button onClick={() => addToCart(idDrink )}>{buttonTitle}</button>
+    </article>
+  );
+};
 
-	render() {
-		const { cocktail, title, onDelete } = this.props;
-		const { strDrink, strDrinkThumb, strInstructions, idDrink } = cocktail;
-
-		return (
-			<article className="cocktail-container">
-				<h2>{strDrink}</h2>
-				<img src={strDrinkThumb} alt={title} />
-				<p>{strInstructions}</p>
-				<button onClick={(e) => onDelete(idDrink)}>Delete me</button>
-			</article>
-		);
-	}
-}
+export default CocktailContainer;
