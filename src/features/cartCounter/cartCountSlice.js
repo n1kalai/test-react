@@ -28,6 +28,9 @@ const cartCountSclice = createSlice({
         },
         deleteCartItem(state, action){
             state.items = state.items.filter(item => item.idDrink !== action.payload);
+            if(state.items.length === 0) {
+                state.showCartItems = false;
+            }
         },
     }
 })
