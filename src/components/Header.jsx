@@ -1,84 +1,82 @@
-// const AdminHeaders = {
-// 	user: <UserHeader />,
-// 	admin: <AdminHeader />,
-// };
-
-import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { showCart } from "../features/CartCountSlice";
 
-const StyledHeader = styled.header`
-	display: flex;
-	justify-content: space-between;
-`;
+const Header = () => {
+  const HeaderWrapper = styled.header`
+    height: 110px;
+    background-color: rgb(154, 164, 255);
 
-export const Header = ({ user, setUser, setShowLoginModal }) => {
-	const handleShowSignIn = () => {
-		setShowLoginModal(true);
-	};
+    & nav {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
 
-	const handleLogOut = () => {
-		localStorage.removeItem("user");
-		setUser({ isSignedIn: false, name: "" });
-	};
+    & h1 {
+      margin-top: 40px;
+    }
 
-	return (
-		<StyledHeader>
-			<nav>
-				<ul>
-					<li>
-						<NavLink
-							className={({ isActive, isPending }) =>
-								isActive ? "active" : isPending ? "pending" : ""
-							}
-							to="/"
-						>
-							Home
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? "active more-classname " : ""
-							}
-							to="/about"
-						>
-							About
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? "active more-classname " : ""
-							}
-							to="/cocktails"
-						>
-							cocktails
-						</NavLink>
-					</li>
+    & img {
+      width: 30px;
+    }
 
-					<li>3</li>
-					<li>4</li>
-					<li>5</li>
-				</ul>
-			</nav>
-			{user.isSignedIn ? (
-				<div>
-					welcome: {user.name}
-					<button onClick={handleLogOut}>sign out</button>
-				</div>
-			) : (
-				<button onClick={handleShowSignIn}>sign in</button>
-			)}
-		</StyledHeader>
-	);
+    & p {
+      font-size: 20px;
+    }
+  `;
+
+  const Ul = styled.ul`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 40px;
+    & li {
+      list-style-type: none;
+    }
+
+    & a {
+      color: black;
+      text-decoration: none;
+      font-size: 20px;
+    }
+  `;
+
+  const CartButton = styled.button`
+    background-color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100px;
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  `;
+
+  const counter = useSelector((state) => state.cartcount);
+  const dispatch = useDispatch();
+
+  return (
+    <HeaderWrapper>
+      <nav>
+        <h1>Redux HW</h1>
+        <Ul>
+          <li>
+            <a href=".">Home</a>
+          </li>
+          <li>
+            <a href=".">About</a>
+          </li>
+          <div>
+            <CartButton onClick={() => dispatch(showCart())}>Cart: {counter.showNum && counter.items.length}</CartButton>
+          </div>
+        </Ul>
+      </nav>
+    </HeaderWrapper>
+  );
 };
-// role = "admin"
-// AdminHeaders[role]
 
-// // if (role === "admin") {
-// // 	return <Adminheader />;
-// // }
-
-// // if (role === "user") {
-// // 	return <UserHeader />;
-// // }
+export default Header;
