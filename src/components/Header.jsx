@@ -7,16 +7,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { setUser } from "../features/user/userReducer";
+import { showCart } from "../features/cocktails/cocktailsReducer";
 
 const StyledHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
+	padding: 10px;
+	align-items: center;
+	& nav ul {
+		display: flex;
+		list-style: none;
+		gap: 10px;
+	}
 `;
 
 const getUser = (state) => state.user;
 
 export const Header = ({ setShowLoginModal }) => {
 	const dispatch = useDispatch();
+	const cartItems = useSelector((state) => state.cocktails.cartItems);
+
 	const handleShowSignIn = () => {
 		setShowLoginModal(true);
 	};
@@ -67,20 +77,41 @@ export const Header = ({ setShowLoginModal }) => {
 							className={({ isActive }) =>
 								isActive ? "active more-classname " : ""
 							}
-							to="/redux"
+							to="/cocktails-cart"
 						>
-							redux
+							Cocktails With Cart
 						</NavLink>
 					</li>
-
-					<li>4</li>
-					<li>5</li>
+					<li>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? "active more-classname " : ""
+							}
+							to="/redux"
+						>
+							Redux Started
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? "active more-classname " : ""
+							}
+							to="/context"
+						>
+							Context
+						</NavLink>
+					</li>
 				</ul>
 			</nav>
+
 			{user.isSignedIn ? (
 				<div>
 					welcome: {user.name}
 					<button onClick={handleLogOut}>sign out</button>
+					<button onClick={() => dispatch(showCart())}>
+						Cart {cartItems.length}
+					</button>
 				</div>
 			) : (
 				<button onClick={handleShowSignIn}>sign in</button>

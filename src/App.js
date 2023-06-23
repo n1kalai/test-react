@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
-
 import LearningContext from "./components/context/LearningContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserPage } from "./pages/UserPage";
 import { Header } from "./components/Header";
 import { About } from "./pages/About";
+import { ReduxTodo } from "./pages/ReduxTodo";
 import ProtectedRoute from "./components/PrivateRoute";
 import { LoginModal } from "./components/LoginModal";
-import { fetchCocktails } from "./api/cocktails";
+
 import LiveSearch from "./components/Livesearch/LiveSearch";
-import axios from "axios";
+
 import { ReduxPlay } from "./pages/ReduxPlay";
 import { setUser } from "./features/user/userReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { NotFound } from "./pages/NotFound";
+import { CocktailsWithCart } from "./pages/CocktailsWithCart";
+import { CocktailContainer } from "./components/cocktails/CocktailContainer";
 
 const staticPassword = "123";
 
 export const App = () => {
 	const [logIn, setLogIn] = useState({ name: "", password: "" });
 	const [showLoginModal, setShowLoginModal] = useState(false);
-
+	const isCartShown = useSelector((state) => state.cocktails.showCartItems);
+	const data = useSelector((state) => state.cocktails.cartItems);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		const loggedInUser = localStorage.getItem("user");
@@ -61,15 +65,38 @@ export const App = () => {
 					onCloseModal={setShowLoginModal}
 				/>
 			)}
+
+			{isCartShown && (
+				<div
+					className="cocktails-container"
+					style={{ borderBottom: "solid 5px black" }}
+				>
+					{data.map((cocktail) => (
+						<div className="cocktails-container">
+							<CocktailContainer
+								onDelete={() =>
+									console.log("remove from cart", cocktail.idDrink)
+								}
+								cocktail={cocktail}
+								title={cocktail.strDink}
+								buttonTitle="remove from cart"
+							/>
+						</div>
+					))}
+				</div>
+			)}
+
 			<Routes>
-				<Route path="/" element={<LearningContext />} />
+				<Route path="/" element={<ReduxTodo />} />
 				<Route path="/redux" element={<ReduxPlay />} />
+				<Route path="/context" element={<LearningContext />} />
+				<Route path="/cocktails-cart" element={<CocktailsWithCart />} />
 				<Route element={<ProtectedRoute />}>
 					<Route path="/:id" element={<UserPage />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/cocktails" element={<LiveSearch />} />
 				</Route>
-				<Route path="*" element={<div>not GELA</div>} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>
 	);
