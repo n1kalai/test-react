@@ -22,7 +22,7 @@ const cartCountSlice = createSlice({
                 state.items.push(fountCocktail);
             }
         },
-        showCart(state, action) {
+        showCart(state, _action) {
             state.showCartItems = !state.showCartItems;
         },
         deleteCartItem(state, action) {

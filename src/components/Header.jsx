@@ -56,6 +56,15 @@ const Header = () => {
     }
   `;
 
+  const FixedDiv = styled.div`
+      position: fixed;
+      z-index: 2;
+      top: 110px;
+      right: 0;
+      border: 2px solid blue;
+      background-color: #979797;
+  `
+
   const counter = useSelector((state) => state.cartcount);
   const dispatch = useDispatch();
 
@@ -70,9 +79,9 @@ const Header = () => {
           <li>
             <a href=".">About</a>
           </li>
-          <div>
+          <FixedDiv>
             <CartButton onClick={() => dispatch(showCart())}>Cart: {counter.showNum && counter.items.length}</CartButton>
-          </div>
+          </FixedDiv>
         </Ul>
       </nav>
     </HeaderWrapper>
@@ -80,3 +89,5 @@ const Header = () => {
 };
 
 export default Header;
+
+// for git change...
