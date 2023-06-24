@@ -13,6 +13,7 @@ import axios from "axios";
 import { ReduxPlay } from "./pages/ReduxPlay";
 import { setUser } from "./features/user/userReducer";
 import { useDispatch } from "react-redux";
+import {Reduxtodo} from  "./pages/Reduxtodo"
 
 const staticPassword = "123";
 
@@ -64,6 +65,7 @@ export const App = () => {
 			<Routes>
 				<Route path="/" element={<LearningContext />} />
 				<Route path="/redux" element={<ReduxPlay />} />
+				<Route path="/Reduxtodo" element={<Reduxtodo />} />
 				<Route element={<ProtectedRoute />}>
 					<Route path="/:id" element={<UserPage />} />
 					<Route path="/about" element={<About />} />
