@@ -80,7 +80,7 @@ const PostDetails=()=>{
     if (post.isLoading) {
          
         return (
-            <div>
+            <div className="loaderdiv" style={{minHeight:'90vh'}}>
               <Dots />
               <SkeletonContent />
             </div>

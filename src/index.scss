@@ -93,6 +93,7 @@
 	gap: 1rem;
 	min-height: 100vw;
 	position: relative;
+	flex-wrap: wrap;
 	
 	h1 {
 	  color: #A2B2EE;
@@ -166,13 +167,7 @@
 	text-decoration: none;
 	cursor: pointer;
 	text-shadow: 0 0 10px #333;
-  
-	&:visited {
-	  color: #c6ceed;
-	  text-decoration: none;
-	  cursor: pointer;
-	  text-shadow: 0 0 10px #333;
-	}
+
   }
   
   .active{

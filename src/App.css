@@ -138,3 +138,22 @@
 }
 
 
+@media screen and  (max-width: 690px) {
+	.details_wrp{
+		overflow-x: hidden;
+		flex-wrap: wrap;
+		min-height:85vh;
+		margin-bottom: 9rem;
+		margin-top: 2rem;
+	}
+
+	.details_wrp::after{
+		display:none;
+	}
+
+
+
+ }
+  
+
+

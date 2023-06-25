@@ -27,6 +27,15 @@ export const Header = () => {
             text-shadow: 0 0 20px #b2bee7;
             
         }
+
+        
+
+@media screen and  (max-width: 600px) {
+h1{
+    font-size:1.5rem;
+}
+    
+ }
     `;
     const StyledUl = styled.ul`
         display: flex;
@@ -37,6 +46,11 @@ export const Header = () => {
             list-style-type: none;
 
         }
+
+        @media screen and  (max-width: 600px) {
+            gap: 10px
+        }
+          
     `
 
     return (

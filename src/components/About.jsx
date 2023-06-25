@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 import styled from "styled-components"
 
 
@@ -32,11 +33,17 @@ export const About = () => {
             color: #c6ceed;
             text-shadow: 0 0 10px #333;
         }
+
+
+
+
+        }
+           
     `
 
     const WrpDiv = styled.div`
         display: flex;
-         flex-wrap:wrap:
+         flex-wrap:wrap;
         font-size: 1.4rem;
         max-height:75vh;
         overflow-y:scroll;
@@ -45,9 +52,14 @@ export const About = () => {
             margin-top: 8rem;
              font-size: 1.2rem;
         }
+
+    
+
+
     ` 
 
     return (
+
         <AboutStyledDiv>
             <img src='https://wallpapers.com/images/hd/cute-aesthetic-cartoon-powerpuff-girl-buttercup-9i6adl0x6uafm59g.jpg' alt="aboutImg" />
             <h1>ABOUT US</h1>
@@ -80,5 +92,6 @@ And I'm big pimpin' 'cause they know ...
 </p>
             </WrpDiv>
         </AboutStyledDiv>
+       
     )
 }

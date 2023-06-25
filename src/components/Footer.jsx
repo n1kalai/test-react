@@ -13,6 +13,20 @@ export const Footer = () => {
         color:whitesmoke;
         text-shadow: 0 0 3px #333;
         position:relative;
+        flex-wrap:wrap;
+
+        @media screen and  (max-width: 610px) {
+           position:fixed;
+           bottom:0;
+           height:90px;
+           p{
+            display:none;
+           }
+           h1{
+            text-align:center;
+           }
+        }
+         
     `
 
     const FlexDiv = styled.div`
@@ -32,6 +46,11 @@ export const Footer = () => {
     bottom:9.5rem;
     border-radius:50%;
     z-index:1;
+
+    @media screen and  (max-width: 610px) {
+        display: none;
+    }
+       
     
     `
 
@@ -40,7 +59,6 @@ export const Footer = () => {
         <StyledDiv>
             <RoundDiv></RoundDiv>
             <h1>DI-march homeworks</h1>
-            <p>Maia kiknavelidze</p>
             <FlexDiv>
                 <p style={{textDecoration:'underline', fontSize:'1.3rem'}}>contact info:</p>
                 <p>kiknavelidzem2@gmail.com</p>
