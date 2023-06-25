@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button, H1 } from "./styledcomponent";
+import { Postdiv } from "./styledcomponent";
 
 const MainPage = () => {
   const [post, setPost] = useState({
@@ -41,12 +43,12 @@ const MainPage = () => {
   return (
     <div>
       {post.data.map((pst) => (
-        <div key={pst.id}>
+        <Postdiv key={pst.id}>
           <h1>{pst.title}</h1>
           <p>{pst.body}</p>
 
-          <button onClick={() => NextPage(pst.id)}>Next Page</button>
-        </div>
+          <Button onClick={() => NextPage(pst.id)}>Next Page</Button>
+        </Postdiv>
       ))}
     </div>
   );

@@ -3,15 +3,23 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import MainPage from "./mainPage";
 import SecondPage from "./secondPage";
+import Header from "./header";
+import Footer from "./footer";
+import About from "./about";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
+    <Header />
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/secondPage/:id" element={<SecondPage />} />
+      <Route path="/about" element={<About />} />
+      <Route path="*" element={<div>not found</div>} />
     </Routes>
+
+    <Footer />
   </BrowserRouter>
   // </React.StrictMode>
 );
