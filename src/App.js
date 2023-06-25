@@ -1,47 +1,30 @@
-import logo from "./logo.svg";
+import{BrowserRouter,Routes,Route} from 'react-router-dom';
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import { Header } from './components/Header';
+import Main from "./components/Main";
+import PostDetails from './components/PostDetails';
+import Error from './Error';
+import { About } from './components/About';
+import { Footer } from './components/Footer';
 
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
 
 const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
-
-	const onClick = () => {
-		setName(Math.random());
-	};
-
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
 
 	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
+		<>
+		<BrowserRouter>
+		<Header/>
+		<Routes>
+		<Route path="/" element={<Main/>}/>
+		<Route path="/:id" element={<PostDetails/>}/>
+		<Route path="/about" element={<About />} />
+		<Route path="*" element={<Error/>}/>
+		</Routes>
+		<Footer/>
+		</BrowserRouter>
+		
+		</>
 	);
 };
 
