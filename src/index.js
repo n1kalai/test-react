@@ -5,22 +5,20 @@ import "./App.css";
 
 import reportWebVitals from "./reportWebVitals";
 
-import { ExplainReduserHook } from "./components/hooks/ExplainReduserHook";
-import LearningContext from "./components/context/LearningContext";
-import UseReducerHW from "./components/hooks/UseReducerHW";
-import UseReducerPlay from "./components/hooks/UseReducerPlaygroud";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { UserPage } from "./pages/UserPage";
 import { Header } from "./components/Header";
 import { About } from "./pages/About";
+import MainPage from "./components/Pages/MainPage";
+import PostPage from "./components/Pages/PostPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<BrowserRouter>
 		<Header />
 		<Routes>
-			<Route path="/" element={<LearningContext />} />
+			<Route path="/" element={<MainPage />} />
 			<Route path="/about" element={<About />} />
-			<Route path="/:id" element={<UserPage />} />
+			<Route path="/:id" element={<PostPage />} />
 			<Route path="*" element={<div>not GELA</div>} />
 		</Routes>
 		<Header />
