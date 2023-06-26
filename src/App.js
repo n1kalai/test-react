@@ -15,15 +15,15 @@ import { setUser } from "./features/user/userReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { NotFound } from "./pages/NotFound";
 import { CocktailsWithCart } from "./pages/CocktailsWithCart";
-import { CocktailContainer } from "./components/cocktails/CocktailContainer";
+import { Cart } from "./components/Cart/Cart";
 
 const staticPassword = "123";
 
 export const App = () => {
 	const [logIn, setLogIn] = useState({ name: "", password: "" });
 	const [showLoginModal, setShowLoginModal] = useState(false);
-	const isCartShown = useSelector((state) => state.cocktails.showCartItems);
-	const data = useSelector((state) => state.cocktails.cartItems);
+	const isCartShown = useSelector((state) => state.cart.showCartItems);
+
 	const dispatch = useDispatch();
 	useEffect(() => {
 		const loggedInUser = localStorage.getItem("user");
@@ -66,25 +66,7 @@ export const App = () => {
 				/>
 			)}
 
-			{isCartShown && (
-				<div
-					className="cocktails-container"
-					style={{ borderBottom: "solid 5px black" }}
-				>
-					{data.map((cocktail) => (
-						<div className="cocktails-container">
-							<CocktailContainer
-								onDelete={() =>
-									console.log("remove from cart", cocktail.idDrink)
-								}
-								cocktail={cocktail}
-								title={cocktail.strDink}
-								buttonTitle="remove from cart"
-							/>
-						</div>
-					))}
-				</div>
-			)}
+			{isCartShown && <Cart />}
 
 			<Routes>
 				<Route path="/" element={<ReduxTodo />} />

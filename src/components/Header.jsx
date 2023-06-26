@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { setUser } from "../features/user/userReducer";
-import { showCart } from "../features/cocktails/cocktailsReducer";
+import { showCart } from "../features/cart/cartReducer";
 
 const StyledHeader = styled.header`
 	display: flex;
@@ -25,7 +25,7 @@ const getUser = (state) => state.user;
 
 export const Header = ({ setShowLoginModal }) => {
 	const dispatch = useDispatch();
-	const cartItems = useSelector((state) => state.cocktails.cartItems);
+	const { cartItems, cocktailsAmoun } = useSelector((state) => state.cart);
 
 	const handleShowSignIn = () => {
 		setShowLoginModal(true);
@@ -110,7 +110,7 @@ export const Header = ({ setShowLoginModal }) => {
 					welcome: {user.name}
 					<button onClick={handleLogOut}>sign out</button>
 					<button onClick={() => dispatch(showCart())}>
-						Cart {cartItems.length}
+						Cart {cocktailsAmoun}
 					</button>
 				</div>
 			) : (

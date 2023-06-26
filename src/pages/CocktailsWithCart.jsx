@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { fetchCocktails } from "../api/cocktails";
-import { addCartItem, addItems } from "../features/cocktails/cocktailsReducer";
+import { addItems } from "../features/cocktails/cocktailsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { CocktailContainer } from "../components/cocktails/CocktailContainer";
+import { addCartItem } from "../features/cart/cartReducer";
 export const CocktailsWithCart = () => {
 	const dispatch = useDispatch();
 	const { isLoading, isError, data } = useSelector(
@@ -13,8 +14,8 @@ export const CocktailsWithCart = () => {
 		fetchCocktails().then((res) => dispatch(addItems(res.drinks)));
 	}, []);
 
-	const handleAddToCart = (cocktailId) => {
-		dispatch(addCartItem(cocktailId));
+	const handleAddToCart = (_cocktailId, cocktail) => {
+		dispatch(addCartItem(cocktail));
 	};
 
 	if (isLoading) return <div>loading ...</div>;

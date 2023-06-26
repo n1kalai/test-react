@@ -19,19 +19,8 @@ const cocktailsReducer = createSlice({
 			state.cocktails.isLoading = false;
 			state.cocktails.isError = false;
 		},
-		addCartItem(state, action) {
-			const cocktailId = action.payload;
-			const foundCocktail = state.cocktails.data.find(
-				(cocktail) => cocktail.idDrink === cocktailId
-			);
-
-			state.cartItems.push(foundCocktail);
-		},
-		showCart(state) {
-			state.showCartItems = !state.showCartItems;
-		},
 	},
 });
 
-export const { addItems, addCartItem, showCart } = cocktailsReducer.actions;
+export const { addItems } = cocktailsReducer.actions;
 export default cocktailsReducer.reducer;
