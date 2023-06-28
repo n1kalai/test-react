@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import LearningContext from "./components/context/LearningContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserPage } from "./pages/UserPage";
@@ -10,6 +9,8 @@ import { LoginModal } from "./components/LoginModal";
 import { fetchCocktails } from "./api/cocktails";
 import LiveSearch from "./components/Livesearch/LiveSearch";
 import axios from "axios";
+import { CoctailsWithFetch } from "./pages/CoctailsWithFetch";
+import {useSelector} from "react-redux"
 
 const staticPassword = "123";
 
@@ -22,6 +23,7 @@ export const App = () => {
 	const [user, setUser] = useState(userr);
 	const [logIn, setLogIn] = useState({ name: "", password: "" });
 	const [showLoginModal, setShowLoginModal] = useState(false);
+	const isCartShown = useSelector(state => state.cocktails.showCartItems)
 
 	useEffect(() => {
 		const loggedInUser = localStorage.getItem("user");
@@ -67,11 +69,14 @@ export const App = () => {
 					onCloseModal={setShowLoginModal}
 				/>
 			)}
+
+			{isCartShown && <div>cart</div>}
 			<Routes>
 				<Route path="/" element={<LearningContext />} />
 				<Route element={<ProtectedRoute user={user} />}>
 					<Route path="/:id" element={<UserPage />} />
 					<Route path="/about" element={<About />} />
+					<Route path="/cocktails-cart" element={<CoctailsWithFetch />} />
 					<Route path="/cocktails" element={<LiveSearch />} />
 				</Route>
 				<Route path="*" element={<div>not GELA</div>} />
