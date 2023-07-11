@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Error from "../Error";
-import SkeletonContent from "./skeletonContent";
-import Dots from "./Dots";
+import Dots from "../skeleton/Dots";
+import Error from "../skeleton/ErrorPost";
+import SkeletonContent from "../skeleton/LoadingContent";
 
 const PostDetails=()=>{
 

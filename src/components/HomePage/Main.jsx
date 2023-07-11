@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { useNavigate,} from "react-router-dom";
-import Error from "../Error";
-import Skeleton from "./Skeleton";
+import Skeleton from "../skeleton/LoadingPosts";
+import Error from "../skeleton/ErrorPost";
 
 
 
