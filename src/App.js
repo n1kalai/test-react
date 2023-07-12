@@ -1,48 +1,29 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Languages } from "./components/Languages";
-import { useState, useEffect } from "react";
-import { fetchCocktails } from "./api/cocktails";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cart from './components/cart'
+import Home from './components/Home'
+import NavBar from './components/NavBar'
+import NotFound from "./components/NotFound";
+import Error from "./Loaders/Error";
 
-const cocktailsDefaultStatee = {
-	data: [],
-	isLoading: true,
-	isLoaded: false,
-	isError: false,
-};
 
-const App = () => {
-	const [number, setNumber] = useState(1);
-	const [name, setName] = useState("gela");
-	const [cocktails, setCocktails] = useState(cocktailsDefaultStatee);
-	console.log(cocktails);
-	useEffect(() => {
-		handleFetchCocktails();
-	}, []);
+function App() {
+  return (
+    <div className="App">
+       
+       <BrowserRouter>
+          <NavBar/>
+          <Routes>
+            <Route path="/cart" element={<Cart/>} />
+            <Route path="/" element={<Home/>} />
+            <Route path="/*" element={<NotFound/>} />
+          </Routes>
+        
+      </BrowserRouter>
 
-	const handleFetchCocktails = async () => {
-		const fetchedCocktails = await fetchCocktails();
-		setCocktails({
-			data: fetchedCocktails,
-			isLoading: false,
-			isLoaded: true,
-			isError: false,
-		});
-	};
-
-	const onClick = () => {
-		setName(Math.random());
-	};
-
-	if (cocktails.isLoading) {
-		return <h1>იტვირთებაa...</h1>;
-	}
-
-	return (
-		<button onClick={onClick}>
-			{number} {name}
-		</button>
-	);
-};
+	
+    </div>
+  );
+}
 
 export default App;
