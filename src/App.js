@@ -20,66 +20,60 @@ import { Cart } from "./components/Cart/Cart";
 const staticPassword = "123";
 
 export const App = () => {
-	const [logIn, setLogIn] = useState({ name: "", password: "" });
-	const [showLoginModal, setShowLoginModal] = useState(false);
-	const isCartShown = useSelector((state) => state.cart.showCartItems);
+  const [logIn, setLogIn] = useState({ name: "", password: "" });
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const isCartShown = useSelector((state) => state.cart.showCartItems);
 
-	const dispatch = useDispatch();
-	useEffect(() => {
-		const loggedInUser = localStorage.getItem("user");
-		if (loggedInUser) {
-			const parsedUser = JSON.parse(loggedInUser);
-			dispatch(setUser(parsedUser));
-		}
-	}, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const parsedUser = JSON.parse(loggedInUser);
+      dispatch(setUser(parsedUser));
+    }
+  }, []);
 
-	const handleLogin = async () => {
-		const { name, password } = logIn;
+  const handleLogin = async () => {
+    const { name, password } = logIn;
 
-		if (password === staticPassword) {
-			localStorage.setItem(
-				"user",
-				JSON.stringify({ ...logIn, isSignedIn: true })
-			);
+    if (password === staticPassword) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...logIn, isSignedIn: true })
+      );
 
-			// try {
-			// 	await axios.post("http://gela.com", logIn);
-			// } catch (err) {
-			// 	console.log("error", err);
-			// }
+      setShowLoginModal(false);
+      dispatch(setUser({ isSignedIn: true, name }));
+    } else {
+      alert("incorrect credentials");
+    }
+  };
 
-			setShowLoginModal(false);
-			dispatch(setUser({ isSignedIn: true, name }));
-		} else {
-			alert("incorrect credentials");
-		}
-	};
+  return (
+    <BrowserRouter>
+      <Header setShowLoginModal={setShowLoginModal} />
+      {showLoginModal && (
+        <LoginModal
+          setLogIn={setLogIn}
+          onLogin={handleLogin}
+          onCloseModal={setShowLoginModal}
+        />
+      )}
 
-	return (
-		<BrowserRouter>
-			<Header setShowLoginModal={setShowLoginModal} />
-			{showLoginModal && (
-				<LoginModal
-					setLogIn={setLogIn}
-					onLogin={handleLogin}
-					onCloseModal={setShowLoginModal}
-				/>
-			)}
+      {isCartShown && <Cart />}
 
-			{isCartShown && <Cart />}
-
-			<Routes>
-				<Route path="/" element={<ReduxTodo />} />
-				<Route path="/redux" element={<ReduxPlay />} />
-				<Route path="/context" element={<LearningContext />} />
-				<Route path="/cocktails-cart" element={<CocktailsWithCart />} />
-				<Route element={<ProtectedRoute />}>
-					<Route path="/:id" element={<UserPage />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/cocktails" element={<LiveSearch />} />
-				</Route>
-				<Route path="*" element={<NotFound />} />
-			</Routes>
-		</BrowserRouter>
-	);
+      <Routes>
+        <Route path="/" element={<ReduxTodo />} />
+        <Route path="/redux" element={<ReduxPlay />} />
+        <Route path="/context" element={<LearningContext />} />
+        <Route path="/cocktails-cart" element={<CocktailsWithCart />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/:id" element={<UserPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cocktails" element={<LiveSearch />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
