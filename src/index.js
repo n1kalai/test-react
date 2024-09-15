@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./App";
+import "./toDo.css";
 import reportWebVitals from "./reportWebVitals";
+import App from "./App";
 import AppWithClass from "./AppWithClass";
+import ToDoList from "./ToDoList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<AppWithClass />
+	<ToDoList />
 	// </React.StrictMode>
 );
 

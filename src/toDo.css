@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    background-color: #f4f6fc;
+}
+
+.todo_cont {
+    text-align: center;
+    width: 300px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    height: 30px;
+    box-sizing: border-box;
+    padding: 1px;
+    border-radius: 2px;
+    border-color: #91aac7;
+}
+
+.add_button {
+    background-color: #A9A9A9;
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+    margin-left: 30px;
+    border: none;
+}
+
+.add_button:hover {
+    cursor: pointer;
+}
+
+ul {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    list-style: none;
+}
+
+.del_button {
+    background-color: #E0E0E0;
+    height: 30px;
+    width: 80%;
+    margin-bottom: 5px;
+    border: none;
+    box-shadow: 0 0 5px lightgray;
+    text-align: center;
+}
+
+.del_button:hover {
+    cursor: pointer;
+}
