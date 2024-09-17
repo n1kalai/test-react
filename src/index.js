@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import AppWithClass from "./AppWithClass";
+// import App from "./App";
+// import AppWithClass from "./AppWithClass";
+import LiveSearch from "./LiveSearch";
+import Timer from "./Timer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<AppWithClass />
+	<Timer />
 	// </React.StrictMode>
 );
 
