@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #5958584f;
+}
+
+.main_container {
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.main_container .cocktail_img {
+    width: 200px;
+    box-shadow: 0 0 8px rgb(111, 111, 111);
+}
+
+.main_container button {
+    background-color: #5958584f;
+    width: 53px;
+    height: 53px;
+    border: none;
+    border-radius: 50%;
+    margin-top: 75px;
+}
+
+.main_container button:hover {
+    cursor: pointer;
+    background-color: #3e8e41
+}
+
+.main_container button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 4px #5958584f;
+    transform: translateY(1px);
+  }
+
+.main_container .arrow {
+    width: 50px;
+    height: 50px;
+    
+}
