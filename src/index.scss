@@ -1,13 +1,10 @@
-.cocktails-container {
-	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	.cocktail-container {
-		display: flex;
-		flex-direction: column;
-		width: 360px;
-		& img {
-			width: 360px;
-		}
+.main_cont {
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding-top: 100px;
+	button {
+		margin-right: 15px;
 	}
 }
